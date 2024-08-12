@@ -1,0 +1,22 @@
+@import "../variables.scss";
+.container {
+  height: 80vh;
+  background-color: $primary-color-3;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.about {
+  height: 80%;
+  width: 50%;
+  background-image: linear-gradient(
+      to right,
+      rgba($primary-color-3, 0.8),
+      rgba($primary-color-3, 0.8)
+    ),
+    url(./assets/pizza-1.jpg);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}

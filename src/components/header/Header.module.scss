@@ -1,0 +1,29 @@
+@import "../../variables.scss";
+.header {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20% 1rem;
+  grid-template-rows: 13rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to right,
+        rgba($primary-color-3, 0.8),
+        rgba($primary-color-3, 0.8)
+      ),
+      url("./assets/headerPhoto.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.8;
+  }
+}
