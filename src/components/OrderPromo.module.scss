@@ -1,4 +1,12 @@
 @import "../variables.scss";
+.btn_close {
+  font-size: 1.5;
+  background-color: transparent;
+  border: none;
+
+  position: fixed;
+  right: 3rem;
+}
 .order {
   padding: 1rem;
   border-radius: 5px;

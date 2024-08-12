@@ -1,14 +1,26 @@
 import { useState } from "react";
 import styles from "./OrderPromo.module.scss";
 import OrderPromoPizza from "./OrderPromoPizza";
+import OrderPromoPatatine from "./OrderPromoPatatine";
+import OrderPromoBevande from "./OrderPromoBevande";
+import { UsePost } from "../contexts/Context";
 function OrderPromo() {
-  const [showListItems, setShowListItems] = useState(false);
-  function handleShowListItems() {
-    if (showListItems === false) setShowListItems(true);
-    else setShowListItems(false);
-  }
+  const {
+    showListItemsPizze,
+    showListItemsPatatine,
+    showListItemsBevande,
+    handleShowListItemsPizze,
+    handleShowListItemsPatatine,
+    handleShowListItemsBevande,
+    showOrderPromo,
+    HandleShowPromo,
+  } = UsePost();
+  console.log(showOrderPromo);
   return (
     <div className={styles.order}>
+      <button className={styles.btn_close} onClick={HandleShowPromo}>
+        cazzo
+      </button>
       <h1 className={styles.order_h1}>Modifica il tuo menù</h1>
       <h2 className={styles.order_h2}>Menù scelto : X</h2>
       <div className={styles.container}>
@@ -18,7 +30,7 @@ function OrderPromo() {
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
-                onClick={() => handleShowListItems()}
+                onClick={() => handleShowListItemsPizze()}
               >
                 Scegli pizza
               </button>
@@ -38,6 +50,7 @@ function OrderPromo() {
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
+                onClick={() => handleShowListItemsPatatine()}
               >
                 Scegli patatine
               </button>
@@ -57,6 +70,7 @@ function OrderPromo() {
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
+                onClick={() => handleShowListItemsBevande()}
               >
                 Scegli bevanda
               </button>
@@ -76,21 +90,9 @@ function OrderPromo() {
           </div>
         </div>
         <div className={styles.order_list}>
-          {showListItems && (
-            <OrderPromoPizza handleShowListItems={handleShowListItems} />
-          )}
-          <ul className={styles.type}>
-            Patatine
-            {/* {pizze.map((pizza) => (
-            <li className={styles.type_items} key={pizza.id}>{pizza.name}</li>
-          ))} */}
-          </ul>
-          <ul className={styles.type}>
-            Bevanda
-            {/* {pizze.map((pizza) => (
-            <li className={styles.type_items} key={pizza.id}>{pizza.name}</li>
-          ))} */}
-          </ul>
+          {showListItemsPizze && <OrderPromoPizza />}
+          {showListItemsPatatine && <OrderPromoPatatine />}
+          {showListItemsBevande && <OrderPromoBevande />}
         </div>
         <div className={styles.addCart}>
           <p className={styles.addCart_price}>Prezzo: X</p>

@@ -1,12 +1,9 @@
 import { useState } from "react";
 import OrderPromo from "../components/OrderPromo";
 import styles from "./Offerte.module.scss";
+import { UsePost } from "../contexts/Context";
 function Offerte() {
-  const [showOrderPromo, setShowOrderPromo] = useState(false);
-  function HandleShow() {
-    setShowOrderPromo(true);
-  }
-
+  const { showOrderPromo, HandleShowPromo } = UsePost();
   return (
     <main className={styles.container}>
       <div className={styles.intro}>
@@ -14,7 +11,7 @@ function Offerte() {
       </div>
       <section className={styles.promo}>
         {showOrderPromo && <OrderPromo />}
-        <div className={styles.promo_post} onClick={() => HandleShow()}>
+        <div className={styles.promo_post} onClick={HandleShowPromo}>
           <h1 className={styles.promo_post_title}>Menù Reactive</h1>
           <div className={styles.promo_post_menu}>
             <h2>Pizza a scelta</h2>
@@ -25,7 +22,7 @@ function Offerte() {
             <h3>20€</h3>
           </div>
         </div>
-        <div className={styles.promo_post} onClick={() => HandleShow()}>
+        <div className={styles.promo_post} onClick={HandleShowPromo}>
           <h1 className={styles.promo_post_title}>Menù completo</h1>
           <div className={styles.promo_post_menu}>
             <h2>Aperitivo</h2>
@@ -38,7 +35,7 @@ function Offerte() {
             <h3>25€</h3>
           </div>
         </div>
-        <div className={styles.promo_post} onClick={() => HandleShow()}>
+        <div className={styles.promo_post} onClick={HandleShowPromo}>
           <h1 className={styles.promo_post_title}>Pizza no stop</h1>
           <div className={styles.promo_post_menu}>
             <h2>Pizza no stop</h2>

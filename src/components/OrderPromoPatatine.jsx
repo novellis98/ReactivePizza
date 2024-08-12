@@ -1,19 +1,19 @@
 import styles from "./OrderPromo.module.scss";
 import { UsePost } from "../contexts/Context";
 
-function OrderPromoPizza() {
-  const { pizze, handleShowListItemsPizze } = UsePost();
+function OrderPromoPatatine() {
+  const { patatine, handleShowListItemsPatatine } = UsePost();
   return (
     <>
       <ul className={styles.type}>
-        {pizze.map((pizza) => (
-          <li className={styles.type_items} key={pizza.id}>
-            {pizza.name}
+        {patatine.map((patate) => (
+          <li className={styles.type_items} key={patate.id}>
+            {patate.name}
           </li>
         ))}
       </ul>
       <button
-        onClick={() => handleShowListItemsPizze()}
+        onClick={() => handleShowListItemsPatatine()}
         className={`${styles.btn} ${styles.type_btn}`}
       >
         &#8592;
@@ -22,4 +22,4 @@ function OrderPromoPizza() {
   );
 }
 
-export default OrderPromoPizza;
+export default OrderPromoPatatine;

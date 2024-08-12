@@ -2,7 +2,7 @@ import { UsePost } from "../contexts/Context";
 import styles from "./Menu.module.scss";
 
 function Menu() {
-  const pizze = UsePost();
+  const { pizze } = UsePost();
   return (
     <div className={styles.background}>
       <h1 className={styles.title}>Esplora il nostro menù di pizze...</h1>
