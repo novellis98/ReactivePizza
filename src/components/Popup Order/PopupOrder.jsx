@@ -1,24 +1,21 @@
 import { useState } from "react";
-import styles from "./OrderPromo.module.scss";
-import OrderPromoPizza from "./OrderPromoPizza";
-import OrderPromoPatatine from "./OrderPromoPatatine";
-import OrderPromoBevande from "./OrderPromoBevande";
-import { UsePost } from "../contexts/Context";
-function OrderPromo() {
+import styles from "./PopupOrder.module.scss";
+import OrderPizza from "./OrderPizza";
+import OrderPatatine from "./OrderPatatine";
+import OrderBevande from "./OrderBevande";
+import { UsePost } from "../../contexts/Context";
+function PopupOrder() {
   const {
-    showListItemsPizze,
-    showListItemsPatatine,
-    showListItemsBevande,
-    handleShowListItemsPizze,
-    handleShowListItemsPatatine,
-    handleShowListItemsBevande,
-    showOrderPromo,
-    HandleShowPromo,
+    visibleComponent,
+    showPizze,
+    showPatatine,
+    showBevande,
+    HandlePopupOrder,
   } = UsePost();
-  console.log(showOrderPromo);
+
   return (
     <div className={styles.order}>
-      <button className={styles.btn_close} onClick={HandleShowPromo}>
+      <button className={styles.btn_close} onClick={HandlePopupOrder}>
         cazzo
       </button>
       <h1 className={styles.order_h1}>Modifica il tuo menù</h1>
@@ -30,7 +27,7 @@ function OrderPromo() {
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
-                onClick={() => handleShowListItemsPizze()}
+                onClick={() => showPizze()}
               >
                 Scegli pizza
               </button>
@@ -50,7 +47,7 @@ function OrderPromo() {
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
-                onClick={() => handleShowListItemsPatatine()}
+                onClick={() => showPatatine()}
               >
                 Scegli patatine
               </button>
@@ -70,7 +67,7 @@ function OrderPromo() {
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
-                onClick={() => handleShowListItemsBevande()}
+                onClick={() => showBevande()}
               >
                 Scegli bevanda
               </button>
@@ -90,9 +87,18 @@ function OrderPromo() {
           </div>
         </div>
         <div className={styles.order_list}>
-          {showListItemsPizze && <OrderPromoPizza />}
-          {showListItemsPatatine && <OrderPromoPatatine />}
-          {showListItemsBevande && <OrderPromoBevande />}
+          {visibleComponent === "pizze" && <OrderPizza />}
+          {visibleComponent === "patatine" && <OrderPatatine />}
+          {visibleComponent === "bevande" && <OrderBevande />}
+          {/* {!showListItemsPatatine &&
+            !showListItemsBevande &&
+            showListItemsPizze && <OrderPizza />} */}
+          {/* {!showListItemsPizze &&
+            !showListItemsBevande &&
+            showListItemsPatatine && <OrderPatatine />}
+          {!showListItemsPizze &&
+            !showListItemsPatatine &&
+            showListItemsBevande && <OrderBevande />} */}
         </div>
         <div className={styles.addCart}>
           <p className={styles.addCart_price}>Prezzo: X</p>
@@ -103,4 +109,4 @@ function OrderPromo() {
   );
 }
 
-export default OrderPromo;
+export default PopupOrder;

@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "../../variables.scss";
 .btn_close {
   font-size: 1.5;
   background-color: transparent;
@@ -38,10 +38,10 @@
   border: 1px solid $primary-color-3;
   font-size: 1.8rem;
   border-radius: 5px;
+  align-items: center;
 }
 .resume {
   display: grid;
-  grid-template-rows: max-content;
   &_title {
     text-align: center;
     text-transform: uppercase;
@@ -52,14 +52,15 @@
     justify-self: center;
     display: grid;
     align-items: center;
+    gap: 2rem;
 
     &_items {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1rem;
+      justify-self: end;
       &_select {
         grid-column: span 2;
-        justify-self: start;
       }
     }
   }
@@ -102,6 +103,7 @@
 
   &_btn {
     justify-self: end;
+    align-self: center;
     margin-right: 3rem;
   }
 }

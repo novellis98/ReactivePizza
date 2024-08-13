@@ -5,28 +5,13 @@ function NavHeader() {
     <nav className={styles.nav}>
       <ul className={styles.nav__list}>
         <li className={styles.nav__list_items}>
-          <NavLink
-            to="menu"
-            // className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Menu{" "}
-          </NavLink>
+          <NavLink to="menu">Menu </NavLink>
         </li>
         <li className={styles.nav__list_items}>
-          <NavLink
-            to="offerte"
-            // className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Offerte
-          </NavLink>
+          <NavLink to="ordina">Ordina</NavLink>
         </li>
         <li className={styles.nav__list_items}>
-          <NavLink
-            to="about"
-            // className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Chi siamo
-          </NavLink>
+          <NavLink to="about">Chi siamo</NavLink>
         </li>
       </ul>
     </nav>

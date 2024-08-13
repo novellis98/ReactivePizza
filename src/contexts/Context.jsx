@@ -3,26 +3,36 @@ import { createContext, useContext, useEffect, useState } from "react";
 const PostContext = createContext();
 
 function PostProvider({ children }) {
-  const [showListItemsPizze, setShowListItemsPizze] = useState(false);
-  function handleShowListItemsPizze() {
-    if (showListItemsPizze === false) setShowListItemsPizze(true);
-    else setShowListItemsPizze(false);
-  }
-  const [showListItemsPatatine, setShowListItemsPatatine] = useState(false);
-  function handleShowListItemsPatatine() {
-    if (showListItemsPatatine === false) setShowListItemsPatatine(true);
-    else setShowListItemsPatatine(false);
-  }
-  const [showListItemsBevande, setShowListItemsBevande] = useState(false);
-  function handleShowListItemsBevande() {
-    if (showListItemsBevande === false) setShowListItemsBevande(true);
-    else setShowListItemsBevande(false);
-  }
+  const [visibleComponent, setVisibleComponent] = useState("");
 
-  const [showOrderPromo, setShowOrderPromo] = useState(false);
-  function HandleShowPromo() {
-    if (showOrderPromo === false) setShowOrderPromo(true);
-    else setShowOrderPromo(false);
+  const showPizze = () => {
+    if (visibleComponent !== "pizze") {
+      setVisibleComponent("pizze");
+    } else {
+      setVisibleComponent("");
+    }
+  };
+  const showPatatine = () => {
+    if (visibleComponent !== "patatine") {
+      setVisibleComponent("patatine");
+    } else {
+      setVisibleComponent("");
+    }
+  };
+  const showBevande = () => {
+    if (visibleComponent !== "bevande") {
+      setVisibleComponent("bevande");
+    } else {
+      setVisibleComponent("");
+    }
+  };
+
+  const [showPopupOrder, setShowPopupOrder] = useState(false);
+  function HandlePopupOrder() {
+    //toggle open and close popup
+    if (showPopupOrder === false) setShowPopupOrder(true);
+    else setShowPopupOrder(false);
+    setVisibleComponent("");
   }
 
   const [pizze, setPizze] = useState([]);
@@ -49,18 +59,14 @@ function PostProvider({ children }) {
         pizze,
         patatine,
         bevande,
-        showListItemsPizze,
-        showListItemsPatatine,
-        showListItemsBevande,
-        setShowListItemsPizze,
-        setShowListItemsPatatine,
-        setShowListItemsBevande,
-        handleShowListItemsPizze,
-        handleShowListItemsPatatine,
-        handleShowListItemsBevande,
-        showOrderPromo,
-        setShowOrderPromo,
-        HandleShowPromo,
+        visibleComponent,
+        setVisibleComponent,
+        showPizze,
+        showPatatine,
+        showBevande,
+        showPopupOrder,
+        setShowPopupOrder,
+        HandlePopupOrder,
       }}
     >
       {children}

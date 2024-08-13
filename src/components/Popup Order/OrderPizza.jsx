@@ -1,8 +1,8 @@
-import styles from "./OrderPromo.module.scss";
-import { UsePost } from "../contexts/Context";
+import styles from "./PopupOrder.module.scss";
+import { UsePost } from "../../contexts/Context";
 
-function OrderPromoPizza() {
-  const { pizze, handleShowListItemsPizze } = UsePost();
+function OrderPizza() {
+  const { pizze, showPizze } = UsePost();
   return (
     <>
       <ul className={styles.type}>
@@ -13,7 +13,7 @@ function OrderPromoPizza() {
         ))}
       </ul>
       <button
-        onClick={() => handleShowListItemsPizze()}
+        onClick={() => showPizze()}
         className={`${styles.btn} ${styles.type_btn}`}
       >
         &#8592;
@@ -22,4 +22,4 @@ function OrderPromoPizza() {
   );
 }
 
-export default OrderPromoPizza;
+export default OrderPizza;
