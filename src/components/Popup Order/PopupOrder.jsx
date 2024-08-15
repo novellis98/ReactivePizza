@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./PopupOrder.module.scss";
 import OrderPizza from "./OrderPizza";
 import OrderPatatine from "./OrderPatatine";
@@ -11,15 +10,18 @@ function PopupOrder() {
     showPatatine,
     showBevande,
     HandlePopupOrder,
+    menuSelected,
+    price,
+    pizza,
+    patate,
+    drink,
   } = UsePost();
 
   return (
     <div className={styles.order}>
-      <button className={styles.btn_close} onClick={HandlePopupOrder}>
-        cazzo
-      </button>
+      <span className={styles.btn_close} onClick={HandlePopupOrder}></span>
       <h1 className={styles.order_h1}>Modifica il tuo menù</h1>
-      <h2 className={styles.order_h2}>Menù scelto : X</h2>
+      <h2 className={styles.order_h2}>Menù scelto : {menuSelected}</h2>
       <div className={styles.container}>
         <div className={styles.resume}>
           <h1 className={styles.resume_title}>Riassunto ordine</h1>
@@ -31,18 +33,7 @@ function PopupOrder() {
               >
                 Scegli pizza
               </button>
-              <p>X</p>
-              <div>
-                <div>
-                  <label htmlFor="quantity">quantità </label>
-                  <select id="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-                </div>
-              </div>
+              <p>{pizza}</p>
             </div>
             <div className={styles.resume_products_items}>
               <button
@@ -51,18 +42,7 @@ function PopupOrder() {
               >
                 Scegli patatine
               </button>
-              <p>X</p>
-              <div>
-                <div>
-                  <label htmlFor="quantity">quantità </label>
-                  <select id="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-                </div>
-              </div>
+              <p>{patate}</p>
             </div>
             <div className={styles.resume_products_items}>
               <button
@@ -71,18 +51,7 @@ function PopupOrder() {
               >
                 Scegli bevanda
               </button>
-              <p>X</p>
-              <div>
-                <div>
-                  <label htmlFor="quantity">quantità </label>
-                  <select id="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-                </div>
-              </div>
+              <p>{drink}</p>
             </div>
           </div>
         </div>
@@ -90,18 +59,9 @@ function PopupOrder() {
           {visibleComponent === "pizze" && <OrderPizza />}
           {visibleComponent === "patatine" && <OrderPatatine />}
           {visibleComponent === "bevande" && <OrderBevande />}
-          {/* {!showListItemsPatatine &&
-            !showListItemsBevande &&
-            showListItemsPizze && <OrderPizza />} */}
-          {/* {!showListItemsPizze &&
-            !showListItemsBevande &&
-            showListItemsPatatine && <OrderPatatine />}
-          {!showListItemsPizze &&
-            !showListItemsPatatine &&
-            showListItemsBevande && <OrderBevande />} */}
         </div>
         <div className={styles.addCart}>
-          <p className={styles.addCart_price}>Prezzo: X</p>
+          <h3 className={styles.addCart_price}>Prezzo: {price} €</h3>
           <button className={styles.btn}>aggiungi al carrello</button>
         </div>
       </div>

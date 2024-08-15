@@ -1,49 +1,89 @@
 import PopupOrder from "../components/Popup Order/PopupOrder";
 import styles from "./Offerte.module.scss";
 import { UsePost } from "../contexts/Context";
+import { useEffect } from "react";
 function Ordina() {
-  const { showPopupOrder, HandlePopupOrder } = UsePost();
+  const {
+    showPopupOrder,
+    HandlePopupOrder,
+    handleMenuSelected,
+    handleSetPrice,
+  } = UsePost();
+  useEffect(() => {
+    //set body fixed when popup is open
+    if (showPopupOrder) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showPopupOrder]);
+  const handleClick = (menu, price) => {
+    handleMenuSelected(menu);
+    HandlePopupOrder();
+    handleSetPrice(price);
+  };
   return (
     <main className={styles.container}>
       <div className={styles.intro}>
-        <h1> Le nostre offerte</h1>
+        <h1 className={showPopupOrder ? styles.hidden : ""}>
+          Le nostre offerte
+        </h1>
       </div>
       <section className={styles.promo}>
         {showPopupOrder && <PopupOrder />}
-        <div className={styles.promo_post} onClick={HandlePopupOrder}>
+        <div
+          className={` ${styles.promo_post} ${
+            showPopupOrder ? styles.hidden : ""
+          }`}
+          onClick={() => handleClick("menu reactive", "20")}
+        >
           <h1 className={styles.promo_post_title}>Menù Reactive</h1>
           <div className={styles.promo_post_menu}>
-            <h2>Pizza a scelta</h2>
-            <h2>Patatine a scelta</h2>
-            <h2>Bevanda a scelta</h2>
+            <p>Pizza a scelta</p>
+            <p>Patatine a scelta</p>
+            <p>Bevanda a scelta</p>
           </div>
           <div className={styles.promo_post_price}>
-            <h3>20€</h3>
+            <h4>20€</h4>
           </div>
         </div>
-        <div className={styles.promo_post} onClick={HandlePopupOrder}>
+        <div
+          className={` ${styles.promo_post} ${
+            showPopupOrder ? styles.hidden : ""
+          }`}
+          onClick={() => handleClick("menu completo", "25")}
+        >
           <h1 className={styles.promo_post_title}>Menù completo</h1>
           <div className={styles.promo_post_menu}>
-            <h2>Aperitivo</h2>
-            <h2>Pizza a scelta</h2>
-            <h2>Patatine a scelta</h2>
-            <h2>Bevanda a scelta</h2>
-            <h2>Caffè</h2>
+            <p>Aperitivo (salumi e formaggi)</p>
+            <p>Pizza a scelta</p>
+            <p>Patatine a scelta</p>
+            <p>Bevanda a scelta</p>
+            <p>Pizza alla nutella</p>
           </div>
           <div className={styles.promo_post_price}>
-            <h3>25€</h3>
+            <h4>25€</h4>
           </div>
         </div>
-        <div className={styles.promo_post} onClick={HandlePopupOrder}>
+        <div
+          className={` ${styles.promo_post} ${
+            showPopupOrder ? styles.hidden : ""
+          }`}
+        >
           <h1 className={styles.promo_post_title}>Pizza no stop</h1>
-          <h1>(non ordinabile dal sito)</h1>
+          <h3 className={styles.promo_post_subtitle}>
+            (non ordinabile dal sito, disponibile solo in pizzeria)
+          </h3>
           <div className={styles.promo_post_menu}>
-            <h2>Pizza no stop</h2>
-            <h2>Patatine</h2>
-            <h2>Bevanda a scelta</h2>
+            <p>Pizza no stop</p>
+            <p>Patatine</p>
+            <p>Bevanda a scelta</p>
           </div>
           <div className={styles.promo_post_price}>
-            <h3>29€</h3>
+            <h4>29€</h4>
           </div>
         </div>
       </section>

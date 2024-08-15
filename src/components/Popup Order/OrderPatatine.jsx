@@ -2,12 +2,17 @@ import styles from "./PopupOrder.module.scss";
 import { UsePost } from "../../contexts/Context";
 
 function OrderPatatine() {
-  const { patatine, showPatatine } = UsePost();
+  const { patatine, showPatatine, handleSetPatate } = UsePost();
+
   return (
     <>
       <ul className={styles.type}>
         {patatine.map((patate) => (
-          <li className={styles.type_items} key={patate.id}>
+          <li
+            className={styles.type_items}
+            key={patate.id}
+            onClick={() => handleSetPatate(patate.name)}
+          >
             {patate.name}
           </li>
         ))}

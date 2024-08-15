@@ -17,10 +17,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/menu" element={<Menu />} />
-          <Route path="/ordina" element={<Ordina />}>
-            <Route path="menu-free" element={<MenuFree />} />
-            <Route path="offerte" element={<Offerte />} />
-          </Route>
+          <Route path="/ordina" element={<Ordina />} />
+          <Route path="/menu-free" element={<MenuFree />} />
+          <Route path="/offerte" element={<Offerte />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

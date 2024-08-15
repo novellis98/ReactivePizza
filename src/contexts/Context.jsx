@@ -53,6 +53,31 @@ function PostProvider({ children }) {
       .then((res) => res.json())
       .then((data) => setBevande(data));
   }, []);
+  ///////////////////
+
+  const [menuSelected, setMenuSelected] = useState(null);
+  function handleMenuSelected(menu) {
+    setMenuSelected(menu);
+  }
+
+  const [price, setPrice] = useState(null);
+  function handleSetPrice(price) {
+    setPrice(price);
+  }
+
+  const [pizza, setPizza] = useState(null);
+  function handleSetPizza(pizza) {
+    setPizza(pizza);
+  }
+  const [patate, setPatate] = useState(null);
+  function handleSetPatate(patate) {
+    setPatate(patate);
+  }
+  const [drink, setDrink] = useState(null);
+  function handleSetDrink(drink) {
+    setDrink(drink);
+  }
+
   return (
     <PostContext.Provider
       value={{
@@ -67,6 +92,17 @@ function PostProvider({ children }) {
         showPopupOrder,
         setShowPopupOrder,
         HandlePopupOrder,
+        menuSelected,
+        handleMenuSelected,
+        price,
+        setPrice,
+        handleSetPrice,
+        pizza,
+        handleSetPizza,
+        patate,
+        handleSetPatate,
+        drink,
+        handleSetDrink,
       }}
     >
       {children}

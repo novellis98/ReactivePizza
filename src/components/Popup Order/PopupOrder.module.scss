@@ -1,12 +1,34 @@
 @import "../../variables.scss";
 .btn_close {
-  font-size: 1.5;
-  background-color: transparent;
-  border: none;
-
+  display: block;
   position: fixed;
-  right: 3rem;
+  right: 2rem;
+  top: 2rem;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 1000;
+  &:hover {
+    transform: scale(1.1);
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background-color: $secondary-color-2;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
 }
+
 .order {
   padding: 1rem;
   border-radius: 5px;
@@ -15,7 +37,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: red;
+  background-color: $primary-color-4;
+  z-index: 2;
   &_list {
     display: grid;
   }
@@ -23,16 +46,19 @@
     font-size: 2.5rem;
     text-align: center;
     text-transform: uppercase;
+    color: $secondary-color-2;
   }
   &_h2 {
     font-size: 2.3rem;
     text-align: center;
     text-transform: uppercase;
     padding: 1rem;
+    color: $secondary-color-2;
   }
 }
 
 .container {
+  background-color: $secondary-color-1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid $primary-color-3;
@@ -56,9 +82,9 @@
 
     &_items {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
       gap: 1rem;
-      justify-self: end;
+
       &_select {
         grid-column: span 2;
       }
@@ -72,18 +98,24 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-items: start;
+
   &_price {
     justify-self: center;
   }
 }
 .btn {
   text-transform: uppercase;
-  background-color: $secondary-color-2;
+  background-color: $primary-color-4;
   font-size: 1.5rem;
   border: none;
   border-radius: 5px;
   padding: 0.5rem;
   cursor: pointer;
+  color: $secondary-color-2;
+  &:hover {
+    transform: scale(1.05);
+    background-color: $blue-navy;
+  }
 }
 
 .type {
@@ -97,6 +129,7 @@
   &_items {
     &:hover {
       transform: scale(1.1);
+      color: $blue-navy;
       cursor: pointer;
     }
   }

@@ -2,12 +2,16 @@ import styles from "./PopupOrder.module.scss";
 import { UsePost } from "../../contexts/Context";
 
 function OrderPizza() {
-  const { pizze, showPizze } = UsePost();
+  const { pizze, showPizze, handleSetPizza } = UsePost();
   return (
     <>
       <ul className={styles.type}>
         {pizze.map((pizza) => (
-          <li className={styles.type_items} key={pizza.id}>
+          <li
+            className={styles.type_items}
+            key={pizza.id}
+            onClick={() => handleSetPizza(pizza.name)}
+          >
             {pizza.name}
           </li>
         ))}
