@@ -8,20 +8,35 @@ import Offerte from "./pages/Offerte";
 import About from "./pages/About";
 import Footer from "./components/footer/Footer";
 import { PostProvider } from "./contexts/Context";
+import Cart from "./components/Cart";
+import { useContext } from "react";
+import { PostContext } from "./contexts/Context";
+
+function AppContent() {
+  const { state } = useContext(PostContext);
+  const { show_cart } = state;
+
+  return (
+    <>
+      <Cart />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/ordina" element={<Ordina />} />
+        <Route path="/menu-free" element={<MenuFree />} />
+        <Route path="/offerte" element={<Offerte />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </>
+  );
+}
 
 export default function App() {
   return (
     <PostProvider>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/ordina" element={<Ordina />} />
-          <Route path="/menu-free" element={<MenuFree />} />
-          <Route path="/offerte" element={<Offerte />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <AppContent />
         <Footer />
       </BrowserRouter>
     </PostProvider>

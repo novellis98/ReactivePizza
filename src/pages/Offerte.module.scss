@@ -31,11 +31,11 @@
     gap: 5rem;
     border-bottom: 5px solid $primary-color-3;
     &:not(:last-child) {
+      cursor: pointer;
       &:hover {
         transform: scale(1.1);
         color: $blue-navy;
       }
-      cursor: pointer;
     }
 
     &_title {

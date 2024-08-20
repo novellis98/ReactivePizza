@@ -2,24 +2,20 @@ import styles from "./PopupOrder.module.scss";
 import OrderPizza from "./OrderPizza";
 import OrderPatatine from "./OrderPatatine";
 import OrderBevande from "./OrderBevande";
-import { UsePost } from "../../contexts/Context";
+import { useContext } from "react";
+import { PostContext } from "../../contexts/Context";
+
 function PopupOrder() {
-  const {
-    visibleComponent,
-    showPizze,
-    showPatatine,
-    showBevande,
-    HandlePopupOrder,
-    menuSelected,
-    price,
-    pizza,
-    patate,
-    drink,
-  } = UsePost();
+  const { state, dispatch } = useContext(PostContext);
+  const { visibleComponent, menuSelected, price, pizzas, potatoes, drinks } =
+    state;
 
   return (
     <div className={styles.order}>
-      <span className={styles.btn_close} onClick={HandlePopupOrder}></span>
+      <span
+        className={styles.btn_close}
+        onClick={() => dispatch({ type: "TOGGLE_POPUP" })}
+      ></span>
       <h1 className={styles.order_h1}>Modifica il tuo menù</h1>
       <h2 className={styles.order_h2}>Menù scelto : {menuSelected}</h2>
       <div className={styles.container}>
@@ -29,40 +25,59 @@ function PopupOrder() {
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
-                onClick={() => showPizze()}
+                onClick={() =>
+                  dispatch({ type: "SHOW_COMPONENT", payload: "list_pizzas" })
+                }
               >
                 Scegli pizza
               </button>
-              <p>{pizza}</p>
+              <p>{pizzas}</p>
             </div>
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
-                onClick={() => showPatatine()}
+                onClick={() =>
+                  dispatch({ type: "SHOW_COMPONENT", payload: "list_potatoes" })
+                }
               >
                 Scegli patatine
               </button>
-              <p>{patate}</p>
+              <p>{potatoes}</p>
             </div>
             <div className={styles.resume_products_items}>
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
-                onClick={() => showBevande()}
+                onClick={() =>
+                  dispatch({ type: "SHOW_COMPONENT", payload: "list_drinks" })
+                }
               >
                 Scegli bevanda
               </button>
-              <p>{drink}</p>
+              <p>{drinks}</p>
             </div>
           </div>
         </div>
         <div className={styles.order_list}>
-          {visibleComponent === "pizze" && <OrderPizza />}
-          {visibleComponent === "patatine" && <OrderPatatine />}
-          {visibleComponent === "bevande" && <OrderBevande />}
+          {visibleComponent === "list_pizzas" && <OrderPizza />}
+          {visibleComponent === "list_potatoes" && <OrderPatatine />}
+          {visibleComponent === "list_drinks" && <OrderBevande />}
         </div>
         <div className={styles.addCart}>
           <h3 className={styles.addCart_price}>Prezzo: {price} €</h3>
-          <button className={styles.btn}>aggiungi al carrello</button>
+          <button
+            className={styles.btn}
+            onClick={() => {
+              if (state.pizzas && state.potatoes && state.drinks) {
+                dispatch({ type: "ADD_CART" });
+              } else {
+                alert(
+                  "Per favore, seleziona una pizza, patatine e una bevanda prima di aggiungere al carrello."
+                );
+              }
+            }}
+          >
+            aggiungi al carrello
+          </button>
         </div>
       </div>
     </div>

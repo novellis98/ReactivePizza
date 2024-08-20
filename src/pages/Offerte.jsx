@@ -1,14 +1,11 @@
 import PopupOrder from "../components/Popup Order/PopupOrder";
 import styles from "./Offerte.module.scss";
-import { UsePost } from "../contexts/Context";
-import { useEffect } from "react";
-function Ordina() {
-  const {
-    showPopupOrder,
-    HandlePopupOrder,
-    handleMenuSelected,
-    handleSetPrice,
-  } = UsePost();
+import { useContext, useEffect } from "react";
+import { PostContext } from "../contexts/Context";
+function Offerte() {
+  const { state, dispatch } = useContext(PostContext);
+  const { showPopupOrder } = state;
+
   useEffect(() => {
     //set body fixed when popup is open
     if (showPopupOrder) {
@@ -21,9 +18,7 @@ function Ordina() {
     };
   }, [showPopupOrder]);
   const handleClick = (menu, price) => {
-    handleMenuSelected(menu);
-    HandlePopupOrder();
-    handleSetPrice(price);
+    dispatch({ type: "SET_MENU", payload: { menu, price } });
   };
   return (
     <main className={styles.container}>
@@ -47,7 +42,7 @@ function Ordina() {
             <p>Bevanda a scelta</p>
           </div>
           <div className={styles.promo_post_price}>
-            <h4>20€</h4>
+            <h4>{Number(20)} €</h4>
           </div>
         </div>
         <div
@@ -65,7 +60,7 @@ function Ordina() {
             <p>Pizza alla nutella</p>
           </div>
           <div className={styles.promo_post_price}>
-            <h4>25€</h4>
+            <h4>{Number(25)} €</h4>
           </div>
         </div>
         <div
@@ -83,7 +78,7 @@ function Ordina() {
             <p>Bevanda a scelta</p>
           </div>
           <div className={styles.promo_post_price}>
-            <h4>29€</h4>
+            <h4>{Number(29)} €</h4>
           </div>
         </div>
       </section>
@@ -91,4 +86,4 @@ function Ordina() {
   );
 }
 
-export default Ordina;
+export default Offerte;

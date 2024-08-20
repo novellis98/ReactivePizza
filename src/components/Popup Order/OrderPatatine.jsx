@@ -1,24 +1,29 @@
 import styles from "./PopupOrder.module.scss";
-import { UsePost } from "../../contexts/Context";
+
+import { useContext } from "react";
+import { PostContext } from "../../contexts/Context";
 
 function OrderPatatine() {
-  const { patatine, showPatatine, handleSetPatate } = UsePost();
+  const { state, dispatch } = useContext(PostContext);
+  const { list_potatoes } = state;
 
   return (
     <>
       <ul className={styles.type}>
-        {patatine.map((patate) => (
+        {list_potatoes.map((potato) => (
           <li
             className={styles.type_items}
-            key={patate.id}
-            onClick={() => handleSetPatate(patate.name)}
+            key={potato.id}
+            onClick={() =>
+              dispatch({ type: "SET_POTATOES", payload: potato.name })
+            }
           >
-            {patate.name}
+            {potato.name}
           </li>
         ))}
       </ul>
       <button
-        onClick={() => showPatatine()}
+        onClick={() => dispatch({ type: "SHOW_COMPONENT", payload: "" })}
         className={`${styles.btn} ${styles.type_btn}`}
       >
         &#8592;

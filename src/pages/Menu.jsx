@@ -1,8 +1,11 @@
-import { UsePost } from "../contexts/Context";
+import { useContext } from "react";
 import styles from "./Menu.module.scss";
+import { PostContext } from "../contexts/Context";
 
 function Menu() {
-  const { pizze } = UsePost();
+  const { state, dispatch } = useContext(PostContext);
+  const { list_pizzas } = state;
+
   return (
     <div className={styles.background}>
       <h1 className={styles.title}>Esplora il nostro menù di pizze...</h1>
@@ -11,7 +14,7 @@ function Menu() {
         un viaggio tra sapori autentici e creazioni originali
       </h2>
       <main className={styles.container}>
-        {pizze.map((pizza) => (
+        {list_pizzas.map((pizza) => (
           <section className={styles.pizza} key={pizza.id}>
             <h1 className={styles.pizza_name}>{pizza.name}</h1>
             <img

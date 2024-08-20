@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+.cart {
+  position: relative;
+  grid-column: 3/4;
+  display: grid;
+  justify-content: end;
+  align-content: center;
+
+  margin-right: 2rem;
+
+  svg {
+    height: 4rem;
+    width: 4rem;
+    cursor: pointer;
+  }
+  .articles {
+    position: absolute;
+    top: 6.5rem;
+    right: 0rem;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    font-size: 1rem;
+    text-align: center;
+    background-color: $secondary-color-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

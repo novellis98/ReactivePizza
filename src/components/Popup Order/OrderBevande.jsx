@@ -1,24 +1,28 @@
+import { useContext } from "react";
 import styles from "./PopupOrder.module.scss";
-import { UsePost } from "../../contexts/Context";
+import { PostContext } from "../../contexts/Context";
 
 function OrderBevande() {
-  const { bevande, showBevande, handleSetDrink } = UsePost();
+  const { state, dispatch } = useContext(PostContext);
+  const { list_drinks } = state;
 
   return (
     <>
       <ul className={styles.type}>
-        {bevande.map((bevanda) => (
+        {list_drinks.map((drink) => (
           <li
             className={styles.type_items}
-            key={bevanda.id}
-            onClick={() => handleSetDrink(bevanda.name)}
+            key={drink.id}
+            onClick={() =>
+              dispatch({ type: "SET_DRINKS", payload: drink.name })
+            }
           >
-            {bevanda.name}
+            {drink.name}
           </li>
         ))}
       </ul>
       <button
-        onClick={() => showBevande()}
+        onClick={() => dispatch({ type: "SHOW_COMPONENT", payload: "" })}
         className={`${styles.btn} ${styles.type_btn}`}
       >
         &#8592;
