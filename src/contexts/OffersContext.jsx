@@ -1,4 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
+
 const initialState = {
   visibleComponent: "",
   showPopupOrder: false,
@@ -10,13 +11,7 @@ const initialState = {
   pizzas: null,
   potatoes: null,
   drinks: null,
-  // showAlert: false,
-  // alertMessage: "",
-  // cart: [],
-  // show_cart: false,
-  // articles: 0,
-  // total_price: 0,
-  // updatedCart: [],
+  isLoading: true,
 };
 
 function orderReducer(state, action) {
@@ -51,7 +46,10 @@ function orderReducer(state, action) {
       return { ...state, potatoes: action.payload };
     case "SET_DRINKS":
       return { ...state, drinks: action.payload };
-
+    case "SET_LOADING":
+      return { ...state, isLoading: true };
+    case "LOADING_COMPLETE":
+      return { ...state, isLoading: false };
     case "ADD_TO_CART":
       return {
         ...state,
@@ -61,7 +59,6 @@ function orderReducer(state, action) {
         visibleComponent: "",
         showPopupOrder: false,
       };
-
     default:
       throw new Error(`Unknown action: ${action.type}`);
   }
@@ -73,21 +70,31 @@ function OffersProvider({ children }) {
   const [state, dispatch] = useReducer(orderReducer, initialState);
 
   useEffect(() => {
-    fetch(`../data/pizze.json`)
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "SET_LIST_PIZZAS", payload: data }));
-  }, []);
+    const fetchData = async () => {
+      dispatch({ type: "SET_LOADING" });
 
-  useEffect(() => {
-    fetch(`../data/patatine.json`)
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "SET_LIST_POTATOES", payload: data }));
-  }, []);
+      try {
+        const pizzaResponse = await fetch("../data/pizze.json");
+        const pizzas = await pizzaResponse.json();
+        dispatch({ type: "SET_LIST_PIZZAS", payload: pizzas });
 
-  useEffect(() => {
-    fetch(`../data/bevande.json`)
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "SET_LIST_DRINKS", payload: data }));
+        const potatoResponse = await fetch("../data/patatine.json");
+        const potatoes = await potatoResponse.json();
+        dispatch({ type: "SET_LIST_POTATOES", payload: potatoes });
+
+        const drinkResponse = await fetch("../data/bevande.json");
+        const drinks = await drinkResponse.json();
+        dispatch({ type: "SET_LIST_DRINKS", payload: drinks });
+
+        dispatch({ type: "LOADING_COMPLETE" });
+      } catch (error) {
+        console.error("Error loading data:", error);
+        // Gestisci l'errore di caricamento
+        dispatch({ type: "LOADING_COMPLETE" });
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (

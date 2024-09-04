@@ -2,31 +2,31 @@
   {
     "id": 1,
     "name": "Margherita",
-    "url_photo": "https://example.com/images/margherita.jpg",
+    "photo": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fG1hcmdoZXJpdGF8ZW58MHx8MHx8fDA%3D",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
       { "id": 3, "name": "Basilico" }
     ],
     "vegetarian": true,
-    "price": 8.5
+    "price": 6.5
   },
   {
     "id": 2,
     "name": "Peperoni",
-    "url_photo": "https://example.com/images/peperoni.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
       { "id": 4, "name": "Peperoni" }
     ],
     "vegetarian": false,
-    "price": 10.0
+    "price": 8.0
   },
   {
     "id": 3,
     "name": "Quattro Stagioni",
-    "url_photo": "https://example.com/images/quattro_stagioni.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -36,12 +36,12 @@
       { "id": 8, "name": "Olive" }
     ],
     "vegetarian": false,
-    "price": 12.0
+    "price": 10.0
   },
   {
     "id": 4,
     "name": "Vegetariana",
-    "url_photo": "https://example.com/images/vegetariana.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -50,12 +50,12 @@
       { "id": 11, "name": "Melanzane" }
     ],
     "vegetarian": true,
-    "price": 9.5
+    "price": 7.5
   },
   {
     "id": 5,
     "name": "Capricciosa",
-    "url_photo": "https://example.com/images/capricciosa.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -65,12 +65,12 @@
       { "id": 8, "name": "Olive" }
     ],
     "vegetarian": false,
-    "price": 11.0
+    "price": 9.0
   },
   {
     "id": 6,
     "name": "Quattro Formaggi",
-    "url_photo": "https://example.com/images/quattro_formaggi.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 12, "name": "Mozzarella" },
       { "id": 13, "name": "Gorgonzola" },
@@ -78,12 +78,12 @@
       { "id": 15, "name": "Pecorino" }
     ],
     "vegetarian": true,
-    "price": 10.5
+    "price": 8.5
   },
   {
     "id": 7,
     "name": "Diavola",
-    "url_photo": "https://example.com/images/diavola.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -91,24 +91,24 @@
       { "id": 17, "name": "Peperoncino" }
     ],
     "vegetarian": false,
-    "price": 10.0
+    "price": 8.0
   },
   {
     "id": 8,
     "name": "Marinara",
-    "url_photo": "https://example.com/images/marinara.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 18, "name": "Aglio" },
       { "id": 19, "name": "Origano" }
     ],
     "vegetarian": true,
-    "price": 7.5
+    "price": 5.5
   },
   {
     "id": 9,
     "name": "Boscaiola",
-    "url_photo": "https://example.com/images/boscaiola.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -116,12 +116,12 @@
       { "id": 20, "name": "Salsiccia" }
     ],
     "vegetarian": false,
-    "price": 11.5
+    "price": 9.5
   },
   {
     "id": 10,
     "name": "Napoletana",
-    "url_photo": "https://example.com/images/napoletana.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -130,12 +130,12 @@
       { "id": 19, "name": "Origano" }
     ],
     "vegetarian": false,
-    "price": 9.0
+    "price": 7.0
   },
   {
     "id": 11,
     "name": "Prosciutto e Funghi",
-    "url_photo": "https://example.com/images/prosciutto_funghi.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -143,12 +143,12 @@
       { "id": 6, "name": "Funghi" }
     ],
     "vegetarian": false,
-    "price": 10.0
+    "price": 8.0
   },
   {
     "id": 12,
     "name": "Puttanesca",
-    "url_photo": "https://example.com/images/puttanesca.jpg",
+    "photo": "../public/assets/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -157,6 +157,6 @@
       { "id": 25, "name": "Capperi" }
     ],
     "vegetarian": false,
-    "price": 10.5
+    "price": 8.5
   }
 ]

@@ -12,7 +12,7 @@ function Footer() {
 
         <div className={styles.copyright}>
           &copy; Reactive Pizza, 2024. Questo sito è solo a scopo dimostrativo.
-          I contenuti, i nomi e le immagini presentati non sono reali e sono
+          I contenuti, i nomi e le immagini presentate non sono reali e sono
           stati creati solo per fini illustrativi.
         </div>
       </footer>
