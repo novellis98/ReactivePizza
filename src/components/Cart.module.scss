@@ -37,17 +37,19 @@
     }
   }
   &_order {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     &_item {
       padding: 3rem 2rem;
       position: relative;
+      list-style: none;
       &_remove {
         background-color: $secondary-color-2;
         border: none;
         border-radius: 5px;
         position: absolute;
-        top: 5rem;
+        top: 50%;
         right: 5rem;
+        transform: translateY(-50%);
         cursor: pointer;
       }
       &_menu_selected {
@@ -83,5 +85,13 @@
   border: none;
   font-size: 3rem;
   cursor: pointer;
+  color: $secondary-color-2;
+}
+.select {
+  margin-left: 1rem;
+  border-radius: 5px;
+  border: 1px solid $secondary-color-2;
+  background-color: $primary-color-3;
+
   color: $secondary-color-2;
 }

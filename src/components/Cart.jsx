@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import styles from "./Cart.module.scss";
-import { OffersContext } from "../contexts/OffersContext";
+import { CartContext } from "../contexts/CartContext";
 
 function Cart() {
-  const { state, dispatch } = useContext(OffersContext);
-  const { show_cart, cart, total_price } = state;
+  const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
+  const { show_cart, cart, total_price, quantity } = stateCart;
 
   return (
     <div className={`${styles.cart} ${show_cart ? styles.open : ""}`}>
       <button
         className={styles.close_button}
-        onClick={() => dispatch({ type: "SHOW_CART" })}
+        onClick={() => dispatchCart({ type: "SHOW_CART" })}
       >
         &times;
       </button>
@@ -22,32 +22,73 @@ function Cart() {
             <ul className={styles.cart_order_list}>
               {cart.map((item, index) => (
                 <li key={index} className={styles.cart_order_item}>
-                  <h3 className={styles.cart_order_item_menu_selected}>
-                    {item.menuSelected}
-                  </h3>
-                  <p className={styles.cart_order_item_detail}>
-                    <strong>Pizza:</strong>{" "}
-                    {item.pizzas ? item.pizzas : "Nessuna selezionata"}
-                  </p>
-                  <p className={styles.cart_order_item_detail_1}>
-                    <strong>Patatine:</strong>{" "}
-                    {item.potatoes ? item.potatoes : "Nessuna selezionata"}
-                  </p>
-                  <p className={styles.cart_order_item_detail_2}>
-                    <strong>Bevande:</strong>{" "}
-                    {item.drinks ? item.drinks : "Nessuna selezionata"}
-                  </p>
-                  <p className={styles.cart_order_item_price}>
-                    Prezzo: {item.price} €
-                  </p>
-                  <button
-                    className={styles.cart_order_item_remove}
-                    onClick={() =>
-                      dispatch({ type: "REMOVE_FROM_CART", payload: index })
-                    }
-                  >
-                    &times;
-                  </button>
+                  {item.menuSelected ? (
+                    <>
+                      <h3 className={styles.cart_order_item_menu_selected}>
+                        {item.menuSelected}
+                      </h3>
+                      <p className={styles.cart_order_item_detail}>
+                        <strong>Pizza:</strong>{" "}
+                        {item.pizzas ? item.pizzas : "Nessuna selezionata"}
+                      </p>
+                      <p className={styles.cart_order_item_detail}>
+                        <strong>Patatine:</strong>{" "}
+                        {item.potatoes ? item.potatoes : "Nessuna selezionata"}
+                      </p>
+                      <p className={styles.cart_order_item_detail}>
+                        <strong>Bevande:</strong>{" "}
+                        {item.drinks ? item.drinks : "Nessuna selezionata"}
+                      </p>
+                      <p className={styles.cart_order_item_price}>
+                        Prezzo: {item.price} €
+                      </p>
+                      <button
+                        className={styles.cart_order_item_remove}
+                        onClick={() =>
+                          dispatchCart({
+                            type: "REMOVE_FROM_CART",
+                            payload: index,
+                          })
+                        }
+                      >
+                        &times;
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <h3 className={styles.cart_order_item_detail}>
+                          {item.name ? item.name : "Nessuna selezionata"}
+                        </h3>
+                        <label htmlFor="quantity">Quantità</label>
+                        <select
+                          name="quantity"
+                          id="quantity"
+                          className={styles.select}
+                        >
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
+                      </div>
+
+                      <p className={styles.cart_order_item_price}>
+                        Prezzo: {item.price} €
+                      </p>
+                      <button
+                        className={styles.cart_order_item_remove}
+                        onClick={() =>
+                          dispatchCart({
+                            type: "REMOVE_FROM_CART",
+                            payload: index,
+                          })
+                        }
+                      >
+                        &times;
+                      </button>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
@@ -65,7 +106,7 @@ function Cart() {
             className={styles.cart_order_buy}
             onClick={() => {
               alert("Ordine inviato, grazie per averci scelto");
-              dispatch({ type: "BUY" });
+              dispatchCart({ type: "BUY" });
             }}
           >
             Acquista

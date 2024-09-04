@@ -4,11 +4,14 @@ import OrderPatatine from "./OrderPatatine";
 import OrderBevande from "./OrderBevande";
 import { useContext } from "react";
 import { OffersContext } from "../../contexts/OffersContext";
+import { CartContext } from "../../contexts/CartContext";
 
 function PopupOrder() {
   const { state, dispatch } = useContext(OffersContext);
   const { visibleComponent, menuSelected, price, pizzas, potatoes, drinks } =
     state;
+  const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
+  const {} = stateCart;
   return (
     <div className={styles.order}>
       <span
@@ -78,8 +81,8 @@ function PopupOrder() {
                   potatoes,
                   drinks,
                 };
-                dispatch({ type: "ADD_TO_CART", payload: newItem });
-                ("aggiunto al carrello");
+                dispatchCart({ type: "ADD_TO_CART", payload: newItem });
+                dispatch({ type: "ADD_TO_CART" });
               } else {
                 alert(
                   "Per favore, seleziona una pizza, patatine e una bevanda prima di aggiungere al carrello."

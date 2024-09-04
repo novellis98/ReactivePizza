@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import styles from "./CartSvg.module.scss";
-import { OffersContext } from "../../contexts/OffersContext";
+import { CartContext } from "../../contexts/CartContext";
+
 function CartSvg() {
-  const { state, dispatch } = useContext(OffersContext);
-  const { articles } = state;
+  const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
+  const { articles } = stateCart;
 
   return (
     <div className={styles.cart}>
       {/* !Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. */}
       <svg
-        onClick={() => dispatch({ type: "SHOW_CART", payload: "" })}
+        onClick={() => dispatchCart({ type: "SHOW_CART", payload: "" })}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"
       >

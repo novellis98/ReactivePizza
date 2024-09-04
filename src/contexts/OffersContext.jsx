@@ -10,13 +10,13 @@ const initialState = {
   pizzas: null,
   potatoes: null,
   drinks: null,
-  showAlert: false,
-  alertMessage: "",
-  cart: [],
-  show_cart: false,
-  articles: 0,
-  total_price: 0,
-  updatedCart: [],
+  // showAlert: false,
+  // alertMessage: "",
+  // cart: [],
+  // show_cart: false,
+  // articles: 0,
+  // total_price: 0,
+  // updatedCart: [],
 };
 
 function orderReducer(state, action) {
@@ -52,52 +52,14 @@ function orderReducer(state, action) {
     case "SET_DRINKS":
       return { ...state, drinks: action.payload };
 
-    case "SHOW_CART":
-      return {
-        ...state,
-        show_cart: !state.show_cart,
-      };
-
     case "ADD_TO_CART":
-      const updatedCart = [...state.cart, action.payload];
       return {
         ...state,
-        cart: updatedCart,
-        articles: state.articles + 1,
-        total_price: state.total_price + Number(action.payload.price),
         pizzas: null,
         potatoes: null,
         drinks: null,
         visibleComponent: "",
         showPopupOrder: false,
-        showAlert: true,
-        alertMessage: "Articolo aggiunto al carrello!",
-      };
-    case "HIDE_ALERT":
-      return {
-        ...state,
-        showAlert: false,
-        alertMessage: "",
-      };
-
-    case "REMOVE_FROM_CART":
-      const filteredCart = state.cart.filter(
-        (_, index) => index !== action.payload
-      );
-      return {
-        ...state,
-        cart: filteredCart,
-        articles: state.articles - 1,
-        total_price: filteredCart.reduce(
-          (acc, item) => acc + (Number(item.price) || 0),
-          0
-        ),
-      };
-    case "BUY":
-      return {
-        ...state,
-        cart: [],
-        articles: 0,
       };
 
     default:

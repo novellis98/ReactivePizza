@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./MenuFree.module.scss";
 import { OffersContext } from "../contexts/OffersContext";
 import { MenuFreeContext } from "../contexts/MenuFreeContext";
 import OrderAddToCart from "../components/OrderAddToCart";
+import AlertAddToCart from "../components/AlertAddToCart";
 
 function MenuFree() {
   const { state, dispatch } = useContext(OffersContext);
@@ -15,9 +16,20 @@ function MenuFree() {
   const handleClick = (item) => {
     dispatchMenuFree({ type: "OPEN_POPUP", payload: item });
   };
-
+  useEffect(() => {
+    //set body fixed when popup is open
+    if (showOrderForm) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showOrderForm]);
   return (
     <div className={styles.background}>
+      <AlertAddToCart />
       <div className={styles.order}>
         {showOrderForm && selectedItem && <OrderAddToCart />}
         <h1 className={styles.order_title}>
@@ -111,8 +123,6 @@ function MenuFree() {
               ))}
           </ul>
         </div>
-
-        <button className={styles.addToCartButton}>Aggiungi al Carrello</button>
       </div>
     </div>
   );

@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import styles from "./OrderAddToCart.module.scss";
 import { MenuFreeContext } from "../contexts/MenuFreeContext";
+import { CartContext } from "../contexts/CartContext";
 
 function OrderAddToCart() {
-  const { state: stateOrderCart, dispatch: dispatchOrderCart } =
+  const { state: stateMenuFree, dispatch: dispatchMenuFree } =
     useContext(MenuFreeContext);
-  const { showOrderForm, selectedItem } = stateOrderCart;
+  const { showOrderForm, selectedItem } = stateMenuFree;
+  const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
+  const {} = stateCart;
 
   if (!selectedItem) return null;
   const [quantity, setQuantity] = useState(1);
@@ -14,10 +17,14 @@ function OrderAddToCart() {
     setQuantity(+event.target.value);
   };
 
-  function onAddToCart(selectedItem, quantity) {
-    dispatchOrderCart({
+  function onAddToCart() {
+    dispatchMenuFree({
       type: "ADD_TO_CART",
-      payload: { selectedItem, quantity },
+    });
+    dispatchCart({
+      type: "ADD_TO_CART",
+      payload: selectedItem,
+      quantity,
     });
   }
 
@@ -27,26 +34,33 @@ function OrderAddToCart() {
         <h2> {selectedItem.name} </h2>
         <button
           className={styles.closeButton}
-          onClick={() => dispatchOrderCart({ type: "CLOSE_POPUP" })}
+          onClick={() => dispatchMenuFree({ type: "CLOSE_POPUP" })}
         >
           &times;
         </button>
       </div>
-      <select
-        name="quantity"
-        id="quantity"
-        value={quantity}
-        onChange={handleQuantityChange}
-      >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
+      <div>
+        <label htmlFor="quantity">Quantità</label>
+        <select
+          name="quantity"
+          id="quantity"
+          value={quantity}
+          onChange={handleQuantityChange}
+          className={styles.select}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+
       <p className={styles.price}>Prezzo totale: {totalPrice.toFixed(2)} €</p>
       <button
         className={styles.addToCartButton}
-        onClick={() => onAddToCart(selectedItem, quantity)}
+        onClick={() => {
+          onAddToCart();
+        }}
       >
         Aggiungi al Carrello
       </button>
