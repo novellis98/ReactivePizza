@@ -1,9 +1,9 @@
 import styles from "./PopupOrder.module.scss";
-import { PostContext } from "../../contexts/Context";
+import { OffersContext } from "../../contexts/OffersContext";
 import { useContext } from "react";
 
 function OrderPizza() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { list_pizzas } = state;
 
   return (

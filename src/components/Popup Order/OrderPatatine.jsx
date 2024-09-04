@@ -1,10 +1,10 @@
 import styles from "./PopupOrder.module.scss";
 
 import { useContext } from "react";
-import { PostContext } from "../../contexts/Context";
+import { OffersContext } from "../../contexts/OffersContext";
 
 function OrderPatatine() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { list_potatoes } = state;
 
   return (

@@ -7,8 +7,10 @@ import MenuFree from "./pages/MenuFree";
 import Offerte from "./pages/Offerte";
 import About from "./pages/About";
 import Footer from "./components/footer/Footer";
-import { PostProvider } from "./contexts/Context";
+import { OffersProvider } from "./contexts/OffersContext";
 import Cart from "./components/Cart";
+import { MenuFreeProvider } from "./contexts/MenuFreeContext";
+import { CartProvider } from "./contexts/CartContext";
 
 function AppContent() {
   return (
@@ -28,12 +30,16 @@ function AppContent() {
 
 export default function App() {
   return (
-    <PostProvider>
-      <BrowserRouter>
-        <Header />
-        <AppContent />
-        <Footer />
-      </BrowserRouter>
-    </PostProvider>
+    <CartProvider>
+      <MenuFreeProvider>
+        <OffersProvider>
+          <BrowserRouter>
+            <Header />
+            <AppContent />
+            <Footer />
+          </BrowserRouter>
+        </OffersProvider>
+      </MenuFreeProvider>
+    </CartProvider>
   );
 }

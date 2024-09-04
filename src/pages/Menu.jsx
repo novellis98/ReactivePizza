@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import styles from "./Menu.module.scss";
-import { PostContext } from "../contexts/Context";
+import { OffersContext } from "../contexts/OffersContext";
 
 function Menu() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { list_pizzas } = state;
 
   return (

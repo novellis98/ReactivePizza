@@ -76,7 +76,7 @@ function orderReducer(state, action) {
     case "HIDE_ALERT":
       return {
         ...state,
-        showAlert: false, // Nascondi l'alert
+        showAlert: false,
         alertMessage: "",
       };
 
@@ -105,9 +105,9 @@ function orderReducer(state, action) {
   }
 }
 
-const PostContext = createContext();
+const OffersContext = createContext();
 
-function PostProvider({ children }) {
+function OffersProvider({ children }) {
   const [state, dispatch] = useReducer(orderReducer, initialState);
 
   useEffect(() => {
@@ -129,10 +129,10 @@ function PostProvider({ children }) {
   }, []);
 
   return (
-    <PostContext.Provider value={{ state, dispatch }}>
+    <OffersContext.Provider value={{ state, dispatch }}>
       {children}
-    </PostContext.Provider>
+    </OffersContext.Provider>
   );
 }
 
-export { PostProvider, PostContext };
+export { OffersProvider, OffersContext };

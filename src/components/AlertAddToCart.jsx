@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { PostContext } from "../contexts/Context";
+import { OffersContext } from "../contexts/OffersContext";
 import styles from "./AlertAddToCart.module.scss";
 
 function AlertAddToCart() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { showAlert, alertMessage } = state;
 
   useEffect(() => {
@@ -12,11 +12,11 @@ function AlertAddToCart() {
         dispatch({ type: "HIDE_ALERT" });
       }, 1000);
 
-      return () => clearTimeout(timer); // Pulizia del timer se il componente viene smontato
+      return () => clearTimeout(timer);
     }
   }, [showAlert, dispatch]);
 
-  if (!showAlert) return null; // Non rendere nulla se showAlert è false
+  if (!showAlert) return null;
 
   return <div className={styles.alert}>{alertMessage}</div>;
 }

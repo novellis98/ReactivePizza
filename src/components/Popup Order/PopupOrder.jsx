@@ -3,10 +3,10 @@ import OrderPizza from "./OrderPizza";
 import OrderPatatine from "./OrderPatatine";
 import OrderBevande from "./OrderBevande";
 import { useContext } from "react";
-import { PostContext } from "../../contexts/Context";
+import { OffersContext } from "../../contexts/OffersContext";
 
 function PopupOrder() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { visibleComponent, menuSelected, price, pizzas, potatoes, drinks } =
     state;
   return (

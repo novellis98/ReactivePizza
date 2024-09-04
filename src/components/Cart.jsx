@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import styles from "./Cart.module.scss";
-import { PostContext } from "../contexts/Context";
+import { OffersContext } from "../contexts/OffersContext";
 
 function Cart() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { show_cart, cart, total_price } = state;
 
   return (

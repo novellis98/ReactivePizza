@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import styles from "./PopupOrder.module.scss";
-import { PostContext } from "../../contexts/Context";
+import { OffersContext } from "../../contexts/OffersContext";
 
 function OrderBevande() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { list_drinks } = state;
 
   return (

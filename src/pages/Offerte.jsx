@@ -1,10 +1,10 @@
 import PopupOrder from "../components/Popup Order/PopupOrder";
 import styles from "./Offerte.module.scss";
 import { useContext, useEffect } from "react";
-import { PostContext } from "../contexts/Context";
+import { OffersContext } from "../contexts/OffersContext";
 import AlertAddToCart from "../components/AlertAddToCart";
 function Offerte() {
-  const { state, dispatch } = useContext(PostContext);
+  const { state, dispatch } = useContext(OffersContext);
   const { showPopupOrder } = state;
 
   useEffect(() => {
