@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./Cart.module.scss";
 import { CartContext } from "../contexts/CartContext";
 
 function Cart() {
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
-  const { show_cart, cart, total_price, quantity } = stateCart;
+  const { show_cart, cart, total_price } = stateCart;
 
   return (
     <div className={`${styles.cart} ${show_cart ? styles.open : ""}`}>

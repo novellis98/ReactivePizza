@@ -9,6 +9,7 @@ const initialState = {
   articles: 0,
   total_price: 0,
   updatedCart: [],
+  quantity: 1,
 };
 function orderReducer(state, action) {
   switch (action.type) {
@@ -32,35 +33,36 @@ function orderReducer(state, action) {
       };
 
     // case "ADD_TO_CART":
-    //     // Controlla se l'articolo è già presente nel carrello
-    //     const itemIndex = state.cart.findIndex(
-    //       (item) => item.id === action.payload.id
-    //     );
-    //     let updatedCart;
+    //   // Controlla se l'articolo è già presente nel carrello
+    //   const itemIndex = state.cart.findIndex(
+    //     (item) => item.id === action.payload.id
+    //   );
+    //   let updatedCart;
 
-    //     if (itemIndex > -1) {
-    //       // L'articolo esiste già, aggiorna la sua quantità
-    //       updatedCart = [...state.cart];
-    //       updatedCart[itemIndex] = {
-    //         ...updatedCart[itemIndex],
-    //         quantity: updatedCart[itemIndex].quantity + action.quantity,
-    //       };
-    //     } else {
-    //       // L'articolo non esiste, aggiungi il nuovo articolo
-    //       updatedCart = [
-    //         ...state.cart,
-    //         { ...action.payload, quantity: action.quantity },
-    //       ];
-    //     }
-    //       return {
-    //       ...state,
-    //       showOrderForm: false,
-    //       cart: updatedCart,
-    //       articles: state.articles + action.quantity,
-    //       total_price: state.total_price + (Number(action.payload.price) * action.quantity),
-    //       showAlert: true,
-    //       alertMessage: "Articolo aggiunto al carrello!",
+    //   if (itemIndex > -1) {
+    //     // L'articolo esiste già, aggiorna la sua quantità
+    //     updatedCart = [...state.cart];
+    //     updatedCart[itemIndex] = {
+    //       ...updatedCart[itemIndex],
+    //       quantity: updatedCart[itemIndex].quantity + action.quantity,
     //     };
+    //   } else {
+    //     // L'articolo non esiste, aggiungi il nuovo articolo
+    //     updatedCart = [
+    //       ...state.cart,
+    //       { ...action.payload, quantity: action.quantity },
+    //     ];
+    //   }
+    //   return {
+    //     ...state,
+    //     showOrderForm: false,
+    //     cart: updatedCart,
+    //     articles: state.articles + action.quantity,
+    //     total_price:
+    //       state.total_price + Number(action.payload.price) * action.quantity,
+    //     showAlert: true,
+    //     alertMessage: "Articolo aggiunto al carrello!",
+    //   };
     case "HIDE_ALERT":
       return {
         ...state,
