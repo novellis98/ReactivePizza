@@ -1,0 +1,62 @@
+@import "../../variables.scss";
+.nav {
+  grid-column: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+
+    &_items {
+      margin-right: 4rem;
+      list-style: none;
+
+      a {
+        display: block;
+        color: $secondary-color-1;
+        text-decoration: none;
+        text-transform: uppercase;
+        white-space: nowrap;
+        font-weight: 600;
+        position: relative;
+        transition: all 0.5s;
+        padding: 0.4rem 0;
+
+        &:global(.active) {
+          color: $secondary-color-5;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background-color: $secondary-color-5;
+          height: 2px;
+          width: 0;
+          transition: all 0.2s;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: $secondary-color-5;
+          height: 2px;
+          width: 0;
+          transition: all 0.5s;
+        }
+        &:hover {
+          transform: scale(1.1);
+          &::after,
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

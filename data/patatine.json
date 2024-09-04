@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Patatine Classiche",
+    "price": 3.5,
+    "ingredients": ["Patate", "Olio di semi", "Sale"]
+  },
+  {
+    "id": 2,
+    "name": "Patatine al Formaggio",
+    "price": 4.0,
+    "ingredients": ["Patate", "Olio di semi", "Sale", "Formaggio grattugiato"]
+  },
+  {
+    "id": 3,
+    "name": "Patatine Piccanti",
+    "price": 4.5,
+    "ingredients": ["Patate", "Olio di semi", "Sale", "Paprika", "Peperoncino"]
+  },
+  {
+    "id": 4,
+    "name": "Patatine con Erbe",
+    "price": 4.0,
+    "ingredients": ["Patate", "Olio di semi", "Sale", "Rosmarino", "Prezzemolo"]
+  }
+]

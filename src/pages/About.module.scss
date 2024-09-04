@@ -1,0 +1,29 @@
+@import "../variables.scss";
+.container {
+  background-color: $primary-color-3;
+  color: $secondary-color-2;
+  margin: 5rem;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 3px;
+  line-height: 3rem;
+}
+.description {
+  margin-bottom: 5rem;
+  line-height: 5rem;
+}
+.hoursList {
+  list-style: none;
+}
+.map_section {
+  height: 60rem;
+  width: 60rem;
+}
+.map {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}

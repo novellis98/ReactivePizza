@@ -1,0 +1,84 @@
+@import "../variables.scss";
+.background {
+  background-color: $primary-color-3;
+}
+.order {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 10rem min-content max-content;
+
+  margin: 5rem 40rem;
+
+  &_title {
+    grid-column: 1/4;
+    align-self: center;
+    justify-self: center;
+    text-transform: uppercase;
+    color: $secondary-color-2;
+    font-size: 2.5rem;
+  }
+}
+.show_items {
+  grid-row: 2/3;
+  align-self: center;
+  justify-self: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: $secondary-color-1;
+  transition: all 0.3s;
+  padding-bottom: 5rem;
+  &:hover {
+    transform: scale(1.05);
+    color: $secondary-color-2;
+  }
+  &.pizzas {
+    grid-column: 1/2;
+  }
+  &.potatoes {
+    grid-column: 2/3;
+  }
+  &.drinks {
+    grid-column: 3/4;
+  }
+}
+.list_items {
+  grid-row: 3/4;
+  grid-column: 1/4;
+  font-size: 2rem;
+  color: $secondary-color-1;
+  cursor: pointer;
+}
+.items {
+  list-style: none;
+  padding: 0.5rem;
+  border-bottom: 1px solid $secondary-color-1;
+  &:hover {
+    transform: scale(1.05);
+    color: $secondary-color-2;
+  }
+  &_title {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 2rem 0;
+    margin: 0;
+  }
+  &_box {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-row: 1fr 1fr;
+  }
+  &_name {
+    grid-column: 1/2;
+  }
+  &_price {
+    grid-column: 2/3;
+    justify-self: end;
+  }
+  &_ingredients {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+}

@@ -1,0 +1,85 @@
+@import "../variables.scss";
+.background {
+  background-color: $primary-color-3;
+}
+.title {
+  padding-top: 4rem;
+  text-align: center;
+  font-size: 3rem;
+  color: $secondary-color-1;
+}
+.subTitle {
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 3rem;
+  color: $secondary-color-1;
+}
+.container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 30rem);
+  padding: 10rem 6rem;
+  gap: 10rem;
+}
+
+.pizza {
+  font-size: 1.6rem;
+  background-color: $secondary-color-1;
+  border-radius: 7px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows:
+    max-content 20rem auto
+    [footer-start] max-content [footer-end];
+
+  &_name {
+    text-transform: uppercase;
+    grid-column: 1/3;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  &_photo {
+    grid-column: 1/3;
+    height: 100%;
+    width: 100%;
+    background-image: url("../public/assets/pizza-1.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  &_main {
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 2rem;
+
+    &_ingredients {
+      grid-column: 1/3;
+      text-transform: uppercase;
+      text-align: center;
+
+      &_items {
+        margin-left: 3rem;
+      }
+    }
+  }
+  &_footer {
+    padding: 0.5rem;
+    border-top: 1px solid $primary-color-3;
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+
+    &_vegetarian {
+      grid-column: 1/2;
+      color: rgb(33, 143, 59);
+    }
+    &_price {
+      grid-column: 2/3;
+    }
+  }
+}
