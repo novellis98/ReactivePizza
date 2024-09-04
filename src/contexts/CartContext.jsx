@@ -31,19 +31,6 @@ function orderReducer(state, action) {
         showAlert: true,
         alertMessage: "Articolo aggiunto al carrello!",
       };
-    // case "ADD_TO_CART":
-    //   const newItem = [...state.cart, action.payload];
-
-    //   return {
-    //     ...state,
-    //     showOrderForm: false,
-    //     cart: newItem,
-    //     articles: state.articles + 1,
-    //     total_price: state.total_price + Number(action.payload.price),
-    //     showAlert: true,
-    //     alertMessage: "Articolo aggiunto al carrello!",
-    //     // quantity: action.payload.quantity,
-    //   };
 
     case "ADD_ITEM_TO_CART":
       //   // Controlla se l'articolo è già presente nel carrello
@@ -137,17 +124,21 @@ function orderReducer(state, action) {
       };
 
     case "REMOVE_FROM_CART":
+      const removedItem = state.cart[action.payload];
       const filteredCart = state.cart.filter(
         (_, index) => index !== action.payload
       );
+      const newArticlesCounts = state.articles - removedItem.quantity;
+      const newTotalPrice = filteredCart.reduce(
+        (acc, item) => acc + (Number(item.price) * item.quantity || 0),
+        0
+      );
+
       return {
         ...state,
         cart: filteredCart,
-        articles: state.articles - 1,
-        total_price: filteredCart.reduce(
-          (acc, item) => acc + (Number(item.price) || 0),
-          0
-        ),
+        articles: newArticlesCounts,
+        total_price: newTotalPrice,
       };
     case "BUY":
       return {

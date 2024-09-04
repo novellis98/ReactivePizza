@@ -12,7 +12,7 @@ function About() {
       <h2 className={styles.description}>
         Ci troviamo in <strong>Via Aurelia 427</strong>.
         <br />
-        Scopri come puoi raggiungerci:
+        Scopri come puoi raggiungerci
       </h2>
       <div className={styles.openingHours}>
         <h2 className={styles.hoursTitle}>Orari di apertura:</h2>

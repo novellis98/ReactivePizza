@@ -11,11 +11,13 @@ import { OffersProvider } from "./contexts/OffersContext";
 import Cart from "./components/Cart";
 import { MenuFreeProvider } from "./contexts/MenuFreeContext";
 import { CartProvider } from "./contexts/CartContext";
+import ScrollToTop from "./hooks/ScrollToTop";
 
 function AppContent() {
   return (
     <>
       <Cart />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/menu" element={<Menu />} />

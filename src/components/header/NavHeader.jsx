@@ -11,7 +11,7 @@ function NavHeader() {
           <NavLink to="ordina">Ordina</NavLink>
         </li>
         <li className={styles.nav__list_items}>
-          <NavLink to="about">Chi siamo</NavLink>
+          <NavLink to="about">Dove siamo</NavLink>
         </li>
       </ul>
     </nav>

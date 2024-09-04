@@ -27,6 +27,31 @@ function MenuFree() {
       document.body.style.overflow = "";
     };
   }, [showOrderForm]);
+
+  function scrollToPizzas() {
+    const element = document.getElementById("pizzas");
+    const elementPosition = element.getBoundingClientRect().top;
+    window.scrollTo({
+      top: elementPosition - 208,
+      behavior: "smooth",
+    });
+  }
+  function scrollToPotatoes() {
+    const element = document.getElementById("potatoes");
+    const elementPosition = element.getBoundingClientRect().top;
+    window.scrollTo({
+      top: elementPosition - 208,
+      behavior: "smooth",
+    });
+  }
+  function scrollToDrinks() {
+    const element = document.getElementById("drinks");
+    const elementPosition = element.getBoundingClientRect().top;
+    window.scrollTo({
+      top: elementPosition - 208,
+      behavior: "smooth",
+    });
+  }
   return (
     <div className={styles.background}>
       <AlertAddToCart />
@@ -38,24 +63,29 @@ function MenuFree() {
 
         <button
           className={`${styles.btn} ${styles.show_items} ${styles.pizzas}`}
+          onClick={scrollToPizzas}
         >
           pizze
         </button>
 
         <button
           className={`${styles.btn} ${styles.show_items} ${styles.potatoes}`}
+          onClick={scrollToPotatoes}
         >
           patatine
         </button>
 
         <button
           className={`${styles.btn} ${styles.show_items} ${styles.drinks}`}
+          onClick={scrollToDrinks}
         >
           bevande
         </button>
 
         <div className={styles.list_items}>
-          <h2 className={styles.items_title}>pizze</h2>
+          <h2 className={styles.items_title} id="pizzas">
+            pizze
+          </h2>
 
           <ul>
             {list_pizzas
@@ -80,7 +110,9 @@ function MenuFree() {
                 </li>
               ))}
           </ul>
-          <h2 className={styles.items_title}>patatine</h2>
+          <h2 className={styles.items_title} id="potatoes">
+            patatine
+          </h2>
           <ul>
             {list_potatoes
               .sort((a, b) => a.price - b.price)
@@ -104,7 +136,9 @@ function MenuFree() {
                 </li>
               ))}
           </ul>
-          <h2 className={styles.items_title}>bevande</h2>
+          <h2 className={styles.items_title} id="drinks">
+            bevande
+          </h2>
           <ul>
             {list_drinks
               .sort((a, b) => a.price - b.price)
