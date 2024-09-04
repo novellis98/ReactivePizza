@@ -19,12 +19,11 @@ function OrderAddToCart() {
 
   function onAddToCart() {
     dispatchMenuFree({
-      type: "ADD_TO_CART",
+      type: "ADD_ITEM_TO_CART",
     });
     dispatchCart({
-      type: "ADD_TO_CART",
-      payload: selectedItem,
-      quantity,
+      type: "ADD_ITEM_TO_CART",
+      payload: { selectedItem, quantity },
     });
   }
 

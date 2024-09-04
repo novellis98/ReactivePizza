@@ -4,9 +4,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: $primary-color-2;
-  color: white;
-  padding: 10px;
+  background-color: $soft-green;
+  color: #000;
+  padding: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 5000;
+  font-size: 1.8rem;
+}
+.red {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $soft-red;
+  color: #000;
+  padding: 1.5rem;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 5000;

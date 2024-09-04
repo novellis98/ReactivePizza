@@ -81,12 +81,13 @@ function PopupOrder() {
                   potatoes,
                   drinks,
                 };
-                dispatchCart({ type: "ADD_TO_CART", payload: newItem });
+                dispatchCart({
+                  type: "ADD_OFFER_TO_CART",
+                  payload: newItem,
+                });
                 dispatch({ type: "ADD_TO_CART" });
               } else {
-                alert(
-                  "Per favore, seleziona una pizza, patatine e una bevanda prima di aggiungere al carrello."
-                );
+                dispatchCart({ type: "ALERT" });
               }
             }}
           >

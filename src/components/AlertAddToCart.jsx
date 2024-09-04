@@ -4,21 +4,22 @@ import { CartContext } from "../contexts/CartContext";
 
 function AlertAddToCart() {
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
-  const { showAlert, alertMessage } = stateCart;
+  const { showAlert, alertMessage, alertType } = stateCart;
 
   useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
         dispatchCart({ type: "HIDE_ALERT" });
-      }, 1000);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }
   }, [showAlert, dispatchCart]);
 
   if (!showAlert) return null;
+  const alertClass = `${styles.alert} ${alertType === true ? styles.red : ""}`;
 
-  return <div className={styles.alert}>{alertMessage}</div>;
+  return <div className={alertClass}>{alertMessage}</div>;
 }
 
 export default AlertAddToCart;

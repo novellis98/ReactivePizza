@@ -5,10 +5,7 @@
   right: 0;
   height: 100vh;
   width: 40rem;
-  background-image: linear-gradient(
-    rgba($primary-color-3, 0.9),
-    rgba($primary-color-3, 0.9)
-  );
+  background-color: $primary-color-3;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   transform: translateX(100%);
   transition: all 0.3s ease;
@@ -94,4 +91,10 @@
   background-color: $primary-color-3;
 
   color: $secondary-color-2;
+}
+.btn_quantity {
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  background-color: $secondary-color-2;
+  cursor: pointer;
 }

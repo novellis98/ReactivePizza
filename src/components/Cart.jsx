@@ -4,7 +4,15 @@ import { CartContext } from "../contexts/CartContext";
 
 function Cart() {
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
-  const { show_cart, cart, total_price } = stateCart;
+  const { show_cart, cart, total_price, quantity } = stateCart;
+
+  function handleQuantityDec(index) {
+    dispatchCart({ type: "CHANGE_QUANTITY_DEC", payload: index });
+  }
+
+  function handleQuantityInc(index) {
+    dispatchCart({ type: "CHANGE_QUANTITY_INC", payload: index });
+  }
 
   return (
     <div className={`${styles.cart} ${show_cart ? styles.open : ""}`}>
@@ -56,21 +64,25 @@ function Cart() {
                     </>
                   ) : (
                     <>
-                      <div>
-                        <h3 className={styles.cart_order_item_detail}>
-                          {item.name ? item.name : "Nessuna selezionata"}
-                        </h3>
-                        <label htmlFor="quantity">Quantità</label>
-                        <select
-                          name="quantity"
-                          id="quantity"
-                          className={styles.select}
+                      <h3 className={styles.cart_order_item_detail}>
+                        {item.name ? item.name : "Nessuna selezionata"}
+                      </h3>
+
+                      <div className={styles.cart_order_item_price}>
+                        Quantità:
+                        <button
+                          className={styles.btn_quantity}
+                          onClick={() => handleQuantityDec(index)}
                         >
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                        </select>
+                          -
+                        </button>{" "}
+                        {item.quantity}
+                        <button
+                          className={styles.btn_quantity}
+                          onClick={() => handleQuantityInc(index)}
+                        >
+                          +
+                        </button>
                       </div>
 
                       <p className={styles.cart_order_item_price}>
@@ -105,7 +117,6 @@ function Cart() {
           <button
             className={styles.cart_order_buy}
             onClick={() => {
-              alert("Ordine inviato, grazie per averci scelto");
               dispatchCart({ type: "BUY" });
             }}
           >

@@ -8,8 +8,8 @@ const initialState = {
   show_cart: false,
   articles: 0,
   total_price: 0,
-  updatedCart: [],
-  quantity: 1,
+  quantity: 0,
+  alertType: false,
 };
 function orderReducer(state, action) {
   switch (action.type) {
@@ -19,50 +19,116 @@ function orderReducer(state, action) {
         show_cart: !state.show_cart,
       };
 
-    case "ADD_TO_CART":
-      const updatedCart = [...state.cart, action.payload];
+    case "ADD_OFFER_TO_CART":
+      const newOfferItem = [...state.cart, action.payload];
 
       return {
         ...state,
         showOrderForm: false,
-        cart: updatedCart,
+        cart: newOfferItem,
         articles: state.articles + 1,
         total_price: state.total_price + Number(action.payload.price),
         showAlert: true,
         alertMessage: "Articolo aggiunto al carrello!",
       };
-
     // case "ADD_TO_CART":
-    //   // Controlla se l'articolo è già presente nel carrello
-    //   const itemIndex = state.cart.findIndex(
-    //     (item) => item.id === action.payload.id
-    //   );
-    //   let updatedCart;
+    //   const newItem = [...state.cart, action.payload];
 
-    //   if (itemIndex > -1) {
-    //     // L'articolo esiste già, aggiorna la sua quantità
-    //     updatedCart = [...state.cart];
-    //     updatedCart[itemIndex] = {
-    //       ...updatedCart[itemIndex],
-    //       quantity: updatedCart[itemIndex].quantity + action.quantity,
-    //     };
-    //   } else {
-    //     // L'articolo non esiste, aggiungi il nuovo articolo
-    //     updatedCart = [
-    //       ...state.cart,
-    //       { ...action.payload, quantity: action.quantity },
-    //     ];
-    //   }
     //   return {
     //     ...state,
     //     showOrderForm: false,
-    //     cart: updatedCart,
-    //     articles: state.articles + action.quantity,
-    //     total_price:
-    //       state.total_price + Number(action.payload.price) * action.quantity,
+    //     cart: newItem,
+    //     articles: state.articles + 1,
+    //     total_price: state.total_price + Number(action.payload.price),
     //     showAlert: true,
     //     alertMessage: "Articolo aggiunto al carrello!",
+    //     // quantity: action.payload.quantity,
     //   };
+
+    case "ADD_ITEM_TO_CART":
+      //   // Controlla se l'articolo è già presente nel carrello
+      const itemIndex = state.cart.findIndex(
+        (item) => item.id === action.payload.selectedItem.id
+      );
+      let newItem;
+
+      if (itemIndex > -1) {
+        //     // L'articolo esiste già, aggiorna la sua quantità
+        newItem = [...state.cart];
+        newItem[itemIndex] = {
+          ...newItem[itemIndex],
+          quantity: newItem[itemIndex].quantity + action.payload.quantity,
+        };
+      } else {
+        //     // L'articolo non esiste, aggiungi il nuovo articolo
+        newItem = [
+          ...state.cart,
+          { ...action.payload.selectedItem, quantity: action.payload.quantity },
+        ];
+      }
+      return {
+        ...state,
+        showOrderForm: false,
+        cart: newItem,
+        articles: state.articles + action.payload.quantity,
+        total_price:
+          state.total_price +
+          Number(action.payload.selectedItem.price) * action.payload.quantity,
+        showAlert: true,
+        alertMessage: "Articolo aggiunto al carrello!",
+      };
+
+    case "CHANGE_QUANTITY_INC":
+      const incrementedCart = state.cart.map((item, index) => {
+        if (index === action.payload) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        articles: state.articles + 1,
+        cart: incrementedCart,
+        total_price: incrementedCart.reduce(
+          (acc, item) => acc + item.price * item.quantity,
+          0
+        ),
+      };
+
+    case "CHANGE_QUANTITY_DEC":
+      const decrementedCart = state.cart.map((item, index) => {
+        if (index === action.payload && item.quantity > 1) {
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+          };
+        }
+        return item;
+      });
+      const newArticlesCount =
+        state.cart[action.payload].quantity > 1
+          ? state.articles - 1
+          : state.articles;
+      return {
+        ...state,
+        articles: newArticlesCount > 0 ? newArticlesCount : 0,
+        cart: decrementedCart,
+        total_price: decrementedCart.reduce(
+          (acc, item) => acc + item.price * item.quantity,
+          0
+        ),
+      };
+    case "ALERT":
+      return {
+        ...state,
+        showAlert: true,
+        alertType: true,
+        alertMessage:
+          "Per favore, seleziona una pizza, patatine e una bevanda prima di aggiungere al carrello.",
+      };
     case "HIDE_ALERT":
       return {
         ...state,
@@ -89,6 +155,8 @@ function orderReducer(state, action) {
         cart: [],
         articles: 0,
         total_price: 0,
+        showAlert: true,
+        alertMessage: "Ordine inviato, grazie per averci scelto",
       };
 
     default:

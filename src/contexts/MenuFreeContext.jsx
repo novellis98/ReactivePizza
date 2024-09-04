@@ -14,7 +14,7 @@ function orderReducer(state, action) {
     case "CLOSE_POPUP":
       return { ...state, showOrderForm: false, selectedItem: null };
 
-    case "ADD_TO_CART":
+    case "ADD_ITEM_TO_CART":
       return { ...state, showOrderForm: false };
     default:
       return state;
