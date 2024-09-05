@@ -1,10 +1,17 @@
 @import "../variables.scss";
+@import "../mixins.scss";
 .container {
   background-color: $primary-color-3;
 }
 .header {
   padding: 7rem 10rem;
   color: #fff;
+  @include media-query(tab-small) {
+    padding: 7rem 4rem;
+  }
+  @include media-query(phone) {
+    padding: 3rem 1rem;
+  }
   & h1 {
     font-size: 3.5rem;
     padding-bottom: 3rem;
@@ -24,27 +31,39 @@
 
   &_cottura {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 45rem);
-    grid-template-rows: 30rem;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    grid-template-rows: auto;
     justify-content: center;
-    gap: 5rem;
+    gap: 4rem;
+    @include media-query(tab-small) {
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      gap: 3rem;
+      margin: 2rem 1rem;
+    }
 
     &_img {
       width: 100%;
-      height: 100%;
       border-radius: 10px;
+      object-fit: cover;
+      height: auto;
     }
-    &_caption {
-      font-size: 2rem;
 
+    &_caption {
       align-self: center;
+      font-size: 2rem;
+      margin-top: 1rem;
+      text-align: center;
+      @include media-query(tab-small) {
+        font-size: 1.8rem;
+      }
     }
   }
 }
+
 .comments {
   padding: 5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 40rem);
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 8rem;
   justify-content: center;
   align-items: start;
@@ -56,13 +75,20 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
+  @include media-query(tab-small) {
+    padding: 5rem 1rem;
+    gap: 4rem;
+  }
   &_text {
     border-radius: 7px;
     font-size: 2rem;
     padding: 2rem;
     color: #fff;
     background-color: rgba($primary-color-2, 0.2);
+    text-align: center;
+    @include media-query(tab-small) {
+      padding: 5rem 1rem;
+    }
   }
 }
 .h2 {
@@ -70,4 +96,7 @@
   text-align: center;
   color: #fff;
   font-size: 2.5rem;
+  @include media-query(tab-small) {
+    padding: 5rem 1rem;
+  }
 }

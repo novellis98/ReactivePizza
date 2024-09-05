@@ -1,6 +1,6 @@
 @import "./variables.scss";
 @import "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-
+@import "./mixins.scss";
 h1,
 h2,
 h3,
@@ -13,9 +13,13 @@ body {
   padding: 0;
   padding-top: 13rem; //sotto header fisso
   background-color: $primary-color-3;
+  overflow-x: hidden;
 }
 html {
   font-size: 62.5%;
+  @include media-query(phone) {
+    font-size: 50%;
+  }
 }
 
 ::-webkit-scrollbar {
