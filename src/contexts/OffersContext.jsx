@@ -89,7 +89,7 @@ function OffersProvider({ children }) {
         dispatch({ type: "LOADING_COMPLETE" });
       } catch (error) {
         console.error("Error loading data:", error);
-        // Gestisci l'errore di caricamento
+
         dispatch({ type: "LOADING_COMPLETE" });
       }
     };
