@@ -1,16 +1,19 @@
 @import "../../variables.scss";
+@import "../../mixins.scss";
 .header {
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 20% 2fr 1fr;
+  justify-items: center;
+  align-items: center;
   grid-template-rows: 13rem;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 13rem;
-  z-index: 1; /* Assicurati che l'header sia sopra altri contenuti */
+  z-index: 1;
   background-image: linear-gradient(
       to right,
       rgba($primary-color-3, 0.95),
@@ -20,4 +23,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  @include media-query(tab-small) {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
 }

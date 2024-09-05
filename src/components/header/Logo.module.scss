@@ -6,7 +6,9 @@
   display: grid;
   align-items: center;
   justify-items: center;
-
+  @include media-query(tab-small) {
+    grid-column: 2/3;
+  }
   img {
     width: 100%;
   }
