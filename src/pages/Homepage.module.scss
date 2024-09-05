@@ -6,6 +6,7 @@
 .header {
   padding: 7rem 10rem;
   color: #fff;
+  text-align: center;
   @include media-query(tab-small) {
     padding: 7rem 4rem;
   }
@@ -36,7 +37,17 @@
     justify-content: center;
     gap: 4rem;
     @include media-query(tab-small) {
-      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+      gap: 3rem;
+      margin: 2rem 1rem;
+    }
+    @include media-query(phone) {
+      grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+      gap: 3rem;
+      margin: 2rem 1rem;
+    }
+    @include media-query(phone-small) {
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
       gap: 3rem;
       margin: 2rem 1rem;
     }
