@@ -51,6 +51,7 @@
         top: 50%;
         right: 5rem;
         transform: translateY(-50%);
+        font-weight: 700;
         cursor: pointer;
         color: $primary-color-3;
         @include media-query(phone) {
@@ -80,6 +81,7 @@
       background-color: $secondary-color-2;
       font-size: 2.5rem;
       margin: 3rem auto;
+      color: $primary-color-3;
       cursor: pointer;
       @include media-query(phone) {
         font-size: 3rem;
@@ -108,8 +110,12 @@
 }
 .btn_quantity {
   border-radius: 5px;
+  font-size: 2rem;
   padding: 0.3rem 0.6rem;
   background-color: $secondary-color-2;
   cursor: pointer;
   margin: 0 0.5rem;
+  font-weight: 700;
+  color: $primary-color-3;
+  border: none;
 }
