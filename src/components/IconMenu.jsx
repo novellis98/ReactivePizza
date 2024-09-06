@@ -15,6 +15,7 @@ function IconMenu() {
       dispatchBlockPage({ type: "BLOCK_PAGE", payload: true });
     }
   };
+
   return (
     <div
       className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}

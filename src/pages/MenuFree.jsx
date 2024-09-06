@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./MenuFree.module.scss";
 import { OffersContext } from "../contexts/OffersContext";
 import { MenuFreeContext } from "../contexts/MenuFreeContext";
@@ -17,15 +17,16 @@ function MenuFree() {
   const handleClick = (item) => {
     dispatchMenuFree({ type: "OPEN_POPUP", payload: item });
   };
+  console.log(showOrderForm);
   useEffect(() => {
     //set body fixed when popup is open
     if (showOrderForm) {
-      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [showOrderForm]);
 

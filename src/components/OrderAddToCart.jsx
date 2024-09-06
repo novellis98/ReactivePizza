@@ -6,9 +6,8 @@ import { CartContext } from "../contexts/CartContext";
 function OrderAddToCart() {
   const { state: stateMenuFree, dispatch: dispatchMenuFree } =
     useContext(MenuFreeContext);
-  const { showOrderForm, selectedItem } = stateMenuFree;
-  const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
-  const {} = stateCart;
+  const { selectedItem } = stateMenuFree;
+  const { dispatch: dispatchCart } = useContext(CartContext);
 
   if (!selectedItem) return null;
   const [quantity, setQuantity] = useState(1);

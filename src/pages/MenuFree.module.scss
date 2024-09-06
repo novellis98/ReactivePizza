@@ -67,10 +67,15 @@
   list-style: none;
   padding: 0.5rem;
   border-bottom: 1px solid $secondary-color-1;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.05);
     color: $secondary-color-2;
+    @include media-query(tab-land) {
+      color: $secondary-color-1;
+      transform: scale(1);
+    }
   }
   &_title {
     text-transform: uppercase;

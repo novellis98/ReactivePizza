@@ -5,8 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: max-height 0.6s ease-in-out;
-
+  transition: max-height 0.3s ease-in-out;
+  pointer-events: auto;
   // Menu nascosto di default su mobile
   @include media-query(tab-land) {
     display: block;
@@ -82,7 +82,7 @@
   &.open {
     @include media-query(tab-land) {
       max-height: 600px;
-      transition: max-height 0.6s ease-in-out;
+      transition: max-height 0.3s ease-in-out;
     }
   }
 }

@@ -20,6 +20,7 @@
     box-sizing: border-box;
     transition: 0.3s ease-in-out;
     z-index: 9000;
+
     &:hover {
       .line {
         transform: scale(1.1);

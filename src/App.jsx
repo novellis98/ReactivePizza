@@ -12,12 +12,14 @@ import Cart from "./components/Cart";
 import { MenuFreeProvider } from "./contexts/MenuFreeContext";
 import { CartProvider } from "./contexts/CartContext";
 import ScrollToTop from "./hooks/ScrollToTop";
-import { MenuMobileProvider } from "./contexts/MenuMobile";
+import { MenuMobileContext, MenuMobileProvider } from "./contexts/MenuMobile";
 import { BlockPageProvider } from "./contexts/BlockPageContext";
 import { BlockPageContext } from "./contexts/BlockPageContext";
 import { useContext, useEffect } from "react";
 
 function AppContent() {
+  const { state: stateMenuMobile } = useContext(MenuMobileContext);
+  const { menuOpen } = stateMenuMobile;
   const { state: stateBlockPage } = useContext(BlockPageContext);
   const { blockPage } = stateBlockPage;
 
@@ -25,10 +27,10 @@ function AppContent() {
   useEffect(() => {
     document.body.style.overflow = blockPage ? "hidden" : "auto";
     document.documentElement.style.overflow = blockPage ? "hidden" : "auto";
-  }, [blockPage]);
+    document.body.style.pointerEvents = menuOpen ? "none" : "auto";
+  }, [menuOpen, blockPage]);
   return (
     <>
-      <Cart />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -50,6 +52,7 @@ export default function App() {
           <OffersProvider>
             <MenuMobileProvider>
               <BrowserRouter>
+                <Cart />
                 <Header />
                 <AppContent />
                 <Footer />
