@@ -8,6 +8,7 @@
   justify-items: center;
   @include media-query(tab-small) {
     grid-column: 2/3;
+    padding-left: 0;
   }
   img {
     width: 100%;

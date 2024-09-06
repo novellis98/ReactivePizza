@@ -12,6 +12,7 @@ import Cart from "./components/Cart";
 import { MenuFreeProvider } from "./contexts/MenuFreeContext";
 import { CartProvider } from "./contexts/CartContext";
 import ScrollToTop from "./hooks/ScrollToTop";
+import { MenuMobileProvider } from "./contexts/MenuMobile";
 
 function AppContent() {
   return (
@@ -35,11 +36,13 @@ export default function App() {
     <CartProvider>
       <MenuFreeProvider>
         <OffersProvider>
-          <BrowserRouter>
-            <Header />
-            <AppContent />
-            <Footer />
-          </BrowserRouter>
+          <MenuMobileProvider>
+            <BrowserRouter>
+              <Header />
+              <AppContent />
+              <Footer />
+            </BrowserRouter>
+          </MenuMobileProvider>
         </OffersProvider>
       </MenuFreeProvider>
     </CartProvider>

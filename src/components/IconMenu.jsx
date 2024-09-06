@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styles from "./IconMenu.module.scss";
-function IconMenu({ onClick }) {
-  const [isOpen, setIsOpen] = useState(false);
+import { MenuMobileContext } from "../contexts/MenuMobile";
+function IconMenu() {
+  const { state: stateMenuMobile, dispatch: dispatchMobile } =
+    useContext(MenuMobileContext);
+  const { menuOpen } = stateMenuMobile;
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    if (onClick) onClick(!isOpen); // Passa lo stato al genitore se necessario
+    dispatchMobile({ type: "TOOGLE_MENU" });
   };
 
   return (
     <div
-      className={`${styles.hamburger} ${isOpen ? styles.open : ""}`}
+      className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
       onClick={toggleMenu}
     >
       <span className={styles.line}></span>
@@ -20,24 +22,3 @@ function IconMenu({ onClick }) {
   );
 }
 export default IconMenu;
-// import React, { useState } from 'react';
-// import HamburgerIcon from './HamburgerIcon';
-
-// function App() {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-//   const handleMenuToggle = (open) => {
-//     setIsMenuOpen(open);
-//   };
-
-//   return (
-//     <div>
-//       <header>
-//         <HamburgerIcon onClick={handleMenuToggle} />
-//         {isMenuOpen && <nav> {/* Menu content here */} </nav>}
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;

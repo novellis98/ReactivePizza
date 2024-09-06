@@ -1,16 +1,20 @@
 @import "../variables.scss";
+@import "../mixins.scss";
 .container {
   padding: 10rem;
-  height: calc(100vh - 13rem);
   background-color: $primary-color-3;
   display: grid;
   grid-template-columns: repeat(auto-fit, 30rem);
-  grid-template-rows: 40rem;
   align-content: center;
   justify-content: center;
   gap: 10rem;
+  @include media-query(tab-small) {
+    padding: 5rem;
+    gap: 5rem;
+  }
 }
 .menu_free {
+  height: 40rem;
   background-color: $secondary-color-2;
   border-radius: 5px;
   padding: 2rem;
@@ -19,9 +23,10 @@
   align-items: center;
   justify-items: center;
   transition: all 0.3s;
-
   cursor: pointer;
-
+  @include media-query(tab-small) {
+    height: 20rem;
+  }
   & h1 {
     text-transform: uppercase;
     font-size: 3rem;
@@ -36,6 +41,7 @@
   }
 }
 .offerte {
+  height: 40rem;
   background-color: $secondary-color-2;
   border-radius: 5px;
   padding: 2rem;
@@ -44,8 +50,10 @@
   align-items: center;
   justify-items: center;
   transition: all 0.3s;
-
   cursor: pointer;
+  @include media-query(tab-small) {
+    height: 20rem;
+  }
   & h1 {
     text-transform: uppercase;
     font-size: 3rem;

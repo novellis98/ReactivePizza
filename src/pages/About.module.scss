@@ -1,4 +1,5 @@
 @import "../variables.scss";
+@import "../mixins.scss";
 .container {
   background-color: $primary-color-3;
   color: $secondary-color-2;
@@ -10,10 +11,19 @@
   align-items: center;
   letter-spacing: 3px;
   line-height: 3rem;
+  @include media-query(tab-small) {
+    margin: 1rem;
+  }
 }
 .description {
   margin-bottom: 5rem;
   line-height: 5rem;
+  text-align: center;
+  @include media-query(phone) {
+  }
+}
+.hoursTitle {
+  text-align: center;
 }
 .hoursList {
   list-style: none;
@@ -21,6 +31,14 @@
 .map_section {
   height: 60rem;
   width: 70%;
+  @include media-query(tab-small) {
+    width: 80%;
+    height: 40rem;
+  }
+  @include media-query(phone) {
+    height: 35rem;
+    width: 90%;
+  }
 }
 .map {
   height: 100%;

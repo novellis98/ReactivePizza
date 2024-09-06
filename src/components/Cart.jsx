@@ -86,7 +86,7 @@ function Cart() {
                       </div>
 
                       <p className={styles.cart_order_item_price}>
-                        Prezzo: {item.price} €
+                        Prezzo: {item.price * item.quantity} €
                       </p>
                       <button
                         className={styles.cart_order_item_remove}

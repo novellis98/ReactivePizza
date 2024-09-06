@@ -1,4 +1,5 @@
 @import "../variables.scss";
+@import "../mixins.scss";
 .background {
   background-color: $primary-color-3;
 }
@@ -7,12 +8,18 @@
   text-align: center;
   font-size: 3rem;
   color: $secondary-color-1;
+  @include media-query(phone) {
+    font-size: 2.5rem;
+  }
 }
 .subTitle {
   padding-top: 2rem;
   text-align: center;
   font-size: 3rem;
   color: $secondary-color-1;
+  @include media-query(phone) {
+    font-size: 2.5rem;
+  }
 }
 .container {
   display: grid;
