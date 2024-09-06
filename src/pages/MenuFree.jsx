@@ -79,7 +79,7 @@ function MenuFree() {
         >
           bevande
         </button>
-        <div className={styles.list_items}>
+        <div className={styles.list_container}>
           {isLoading ? (
             <Spinner />
           ) : (
@@ -88,7 +88,7 @@ function MenuFree() {
                 pizze
               </h2>
 
-              <ul>
+              <ul className={styles.list_items}>
                 {list_pizzas
                   .sort((a, b) => a.price - b.price)
                   .map((pizza) => (
@@ -114,7 +114,7 @@ function MenuFree() {
               <h2 className={styles.items_title} id="potatoes">
                 patatine
               </h2>
-              <ul>
+              <ul className={styles.list_items}>
                 {list_potatoes
                   .sort((a, b) => a.price - b.price)
                   .map((potato) => (
@@ -140,7 +140,7 @@ function MenuFree() {
               <h2 className={styles.items_title} id="drinks">
                 bevande
               </h2>
-              <ul>
+              <ul className={styles.list_items}>
                 {list_drinks
                   .sort((a, b) => a.price - b.price)
                   .map((drink) => (

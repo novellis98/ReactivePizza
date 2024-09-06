@@ -8,7 +8,7 @@
   transition: max-height 0.6s ease-in-out;
 
   // Menu nascosto di default su mobile
-  @include media-query(tab-small) {
+  @include media-query(tab-land) {
     display: block;
     position: absolute;
     top: calc(100% - 13rem);
@@ -27,7 +27,7 @@
     align-items: center;
     font-size: 1.8rem;
 
-    @include media-query(tab-small) {
+    @include media-query(tab-land) {
       flex-direction: column;
       align-items: center;
       padding: 5rem 0 0 0;
@@ -37,7 +37,7 @@
       margin-right: 4rem;
       list-style: none;
 
-      @include media-query(tab-small) {
+      @include media-query(tab-land) {
         margin: 2rem 0;
         width: 100%;
         text-align: center;
@@ -80,7 +80,7 @@
 
   // Quando il menu è aperto
   &.open {
-    @include media-query(tab-small) {
+    @include media-query(tab-land) {
       max-height: 600px;
       transition: max-height 0.6s ease-in-out;
     }

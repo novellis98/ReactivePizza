@@ -6,12 +6,15 @@
   display: grid;
   align-items: center;
   justify-items: center;
-  @include media-query(tab-small) {
+  @include media-query(tab-land) {
     grid-column: 2/3;
     padding-left: 0;
   }
   img {
-    width: 100%;
+    width: 20rem;
+    @include media-query(phone-small) {
+      width: 100%;
+    }
   }
 }
 .footer_logo {

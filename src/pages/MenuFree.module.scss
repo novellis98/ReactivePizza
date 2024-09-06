@@ -1,4 +1,5 @@
 @import "../variables.scss";
+@import "../mixins.scss";
 .background {
   background-color: $primary-color-3;
 }
@@ -6,8 +7,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 10rem min-content max-content;
-
-  margin: 5rem 40rem;
+  margin: 5rem 35rem;
+  @include media-query(tab-land) {
+    margin: 5rem 15rem;
+  }
+  @include media-query(tab-port) {
+    margin: 5rem 5rem;
+  }
+  @include media-query(phone) {
+    margin: 5rem 1rem;
+  }
 
   &_title {
     grid-column: 1/4;
@@ -16,6 +25,7 @@
     text-transform: uppercase;
     color: $secondary-color-2;
     font-size: 2.5rem;
+    text-align: center;
   }
 }
 .show_items {
@@ -44,16 +54,20 @@
     grid-column: 3/4;
   }
 }
-.list_items {
+.list_container {
   grid-row: 3/4;
   grid-column: 1/4;
   font-size: 2rem;
   color: $secondary-color-1;
 }
+.list_items {
+  padding: 0;
+}
 .items {
   list-style: none;
   padding: 0.5rem;
   border-bottom: 1px solid $secondary-color-1;
+
   &:hover {
     transform: scale(1.05);
     color: $secondary-color-2;

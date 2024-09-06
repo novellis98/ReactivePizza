@@ -11,8 +11,11 @@ function orderReducer(state, action) {
         ...state,
         menuOpen: !state.menuOpen,
       };
-    // case "":
-    //   return;
+    case "CLOSE_MENU":
+      return {
+        ...state,
+        menuOpen: action.payload,
+      };
 
     // case "":
     //   return;
