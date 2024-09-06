@@ -17,8 +17,6 @@ function orderReducer(state, action) {
         menuOpen: action.payload,
       };
 
-    // case "":
-    //   return;
     default:
       return state;
   }

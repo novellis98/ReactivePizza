@@ -1,15 +1,20 @@
 import { useContext } from "react";
 import styles from "./IconMenu.module.scss";
 import { MenuMobileContext } from "../contexts/MenuMobile";
+import { BlockPageContext } from "../contexts/BlockPageContext";
 function IconMenu() {
-  const { state: stateMenuMobile, dispatch: dispatchMobile } =
+  const { state: stateMenuMobile, dispatch: dispatchMenuMobile } =
     useContext(MenuMobileContext);
   const { menuOpen } = stateMenuMobile;
-
+  const { dispatch: dispatchBlockPage } = useContext(BlockPageContext);
   const toggleMenu = () => {
-    dispatchMobile({ type: "TOOGLE_MENU" });
+    dispatchMenuMobile({ type: "TOOGLE_MENU" });
+    if (menuOpen) {
+      dispatchBlockPage({ type: "BLOCK_PAGE", payload: false });
+    } else {
+      dispatchBlockPage({ type: "BLOCK_PAGE", payload: true });
+    }
   };
-
   return (
     <div
       className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}

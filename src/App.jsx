@@ -13,8 +13,19 @@ import { MenuFreeProvider } from "./contexts/MenuFreeContext";
 import { CartProvider } from "./contexts/CartContext";
 import ScrollToTop from "./hooks/ScrollToTop";
 import { MenuMobileProvider } from "./contexts/MenuMobile";
+import { BlockPageProvider } from "./contexts/BlockPageContext";
+import { BlockPageContext } from "./contexts/BlockPageContext";
+import { useContext, useEffect } from "react";
 
 function AppContent() {
+  const { state: stateBlockPage } = useContext(BlockPageContext);
+  const { blockPage } = stateBlockPage;
+
+  //set block page
+  useEffect(() => {
+    document.body.style.overflow = blockPage ? "hidden" : "auto";
+    document.documentElement.style.overflow = blockPage ? "hidden" : "auto";
+  }, [blockPage]);
   return (
     <>
       <Cart />
@@ -33,18 +44,20 @@ function AppContent() {
 
 export default function App() {
   return (
-    <CartProvider>
-      <MenuFreeProvider>
-        <OffersProvider>
-          <MenuMobileProvider>
-            <BrowserRouter>
-              <Header />
-              <AppContent />
-              <Footer />
-            </BrowserRouter>
-          </MenuMobileProvider>
-        </OffersProvider>
-      </MenuFreeProvider>
-    </CartProvider>
+    <BlockPageProvider>
+      <CartProvider>
+        <MenuFreeProvider>
+          <OffersProvider>
+            <MenuMobileProvider>
+              <BrowserRouter>
+                <Header />
+                <AppContent />
+                <Footer />
+              </BrowserRouter>
+            </MenuMobileProvider>
+          </OffersProvider>
+        </MenuFreeProvider>
+      </CartProvider>
+    </BlockPageProvider>
   );
 }
