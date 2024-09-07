@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./MenuFree.module.scss";
 import { OffersContext } from "../contexts/OffersContext";
 import { MenuFreeContext } from "../contexts/MenuFreeContext";
@@ -21,22 +21,7 @@ function MenuFree() {
   useEffect(() => {
     dispatchMenuFree({ type: "CLOSE_POPUP" });
   }, [dispatchMenuFree]);
-  const popupRef = useRef();
-  console.log(showOrderForm);
-  useEffect(() => {
-    const handleClick = (event) => {
-      if (popupRef.current && popupRef.current.contains(event.target)) {
-        return;
-      }
-      if (showOrderForm) {
-        dispatchMenuFree({ type: "CLOSE_POPUP" });
-      }
-    };
-    document.body.addEventListener("click", handleClick);
-    return () => {
-      document.body.removeEventListener("click", handleClick);
-    };
-  }, [showOrderForm, dispatchMenuFree]);
+
   useEffect(() => {
     //set body fixed when popup is open
     if (showOrderForm) {
@@ -66,7 +51,7 @@ function MenuFree() {
     <div className={styles.background}>
       <AlertAddToCart />
       <div className={styles.order}>
-        {showOrderForm && selectedItem && <OrderAddToCart ref={popupRef} />}
+        {showOrderForm && selectedItem && <OrderAddToCart />}
         <h1 className={styles.order_title}>
           Ordina e scegli tutto ciò che preferisci
         </h1>

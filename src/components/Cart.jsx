@@ -5,7 +5,6 @@ import { CartContext } from "../contexts/CartContext";
 function Cart() {
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
   const { show_cart, cart, total_price, quantity } = stateCart;
-  console.log(show_cart);
   function handleQuantityDec(index) {
     dispatchCart({ type: "CHANGE_QUANTITY_DEC", payload: index });
   }

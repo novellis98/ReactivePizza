@@ -2,26 +2,41 @@ import styles from "./PopupOrder.module.scss";
 import OrderPizza from "./OrderPizza";
 import OrderPatatine from "./OrderPatatine";
 import OrderBevande from "./OrderBevande";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { OffersContext } from "../../contexts/OffersContext";
 import { CartContext } from "../../contexts/CartContext";
 
 function PopupOrder() {
-  const { state, dispatch } = useContext(OffersContext);
+  const { state: stateOffers, dispatch: dispatchOffers } =
+    useContext(OffersContext);
   const { visibleComponent, menuSelected, price, pizzas, potatoes, drinks } =
-    state;
+    stateOffers;
   const { dispatch: dispatchCart } = useContext(CartContext);
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        dispatchOffers({ type: "TOOGLE_POPUP" });
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dispatchOffers]);
 
   //reset popup data when changing page
   useEffect(() => {
-    dispatch({ type: "RESET" });
-  }, [dispatch]);
+    dispatchOffers({ type: "RESET" });
+  }, [dispatchOffers]);
   //
   return (
-    <div className={styles.order}>
+    <div className={styles.order} ref={popupRef}>
       <span
         className={styles.btn_close}
-        onClick={() => dispatch({ type: "TOOGLE_POPUP" })}
+        onClick={() => dispatchOffers({ type: "TOOGLE_POPUP" })}
       ></span>
       <h1 className={styles.order_h1}>Modifica il tuo menù</h1>
       <h2 className={styles.order_h2}>Menù scelto : {menuSelected}</h2>
@@ -37,7 +52,10 @@ function PopupOrder() {
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
                 onClick={() =>
-                  dispatch({ type: "SHOW_COMPONENT", payload: "list_pizzas" })
+                  dispatchOffers({
+                    type: "SHOW_COMPONENT",
+                    payload: "list_pizzas",
+                  })
                 }
               >
                 Scegli pizza
@@ -48,7 +66,10 @@ function PopupOrder() {
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
                 onClick={() =>
-                  dispatch({ type: "SHOW_COMPONENT", payload: "list_potatoes" })
+                  dispatchOffers({
+                    type: "SHOW_COMPONENT",
+                    payload: "list_potatoes",
+                  })
                 }
               >
                 Scegli patatine
@@ -59,7 +80,10 @@ function PopupOrder() {
               <button
                 className={`${styles.btn} ${styles.resume_products_items_select} `}
                 onClick={() =>
-                  dispatch({ type: "SHOW_COMPONENT", payload: "list_drinks" })
+                  dispatchOffers({
+                    type: "SHOW_COMPONENT",
+                    payload: "list_drinks",
+                  })
                 }
               >
                 Scegli bevanda
@@ -78,7 +102,11 @@ function PopupOrder() {
           <button
             className={styles.btn}
             onClick={() => {
-              if (state.pizzas && state.potatoes && state.drinks) {
+              if (
+                stateOffers.pizzas &&
+                stateOffers.potatoes &&
+                stateOffers.drinks
+              ) {
                 const newItem = {
                   menuSelected,
                   price,
@@ -90,7 +118,7 @@ function PopupOrder() {
                   type: "ADD_OFFER_TO_CART",
                   payload: newItem,
                 });
-                dispatch({ type: "ADD_TO_CART" });
+                dispatchOffers({ type: "ADD_TO_CART" });
               } else {
                 dispatchCart({ type: "ALERT" });
               }
