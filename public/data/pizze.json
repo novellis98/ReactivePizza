@@ -14,7 +14,7 @@
   {
     "id": 2,
     "name": "Peperoni",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "Quattro Stagioni",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -41,7 +41,7 @@
   {
     "id": 4,
     "name": "Vegetariana",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -55,7 +55,7 @@
   {
     "id": 5,
     "name": "Capricciosa",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -70,7 +70,7 @@
   {
     "id": 6,
     "name": "Quattro Formaggi",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 12, "name": "Mozzarella" },
       { "id": 13, "name": "Gorgonzola" },
@@ -83,7 +83,7 @@
   {
     "id": 7,
     "name": "Diavola",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -96,7 +96,7 @@
   {
     "id": 8,
     "name": "Marinara",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 18, "name": "Aglio" },
@@ -108,7 +108,7 @@
   {
     "id": 9,
     "name": "Boscaiola",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -121,7 +121,7 @@
   {
     "id": 10,
     "name": "Napoletana",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -135,7 +135,7 @@
   {
     "id": 11,
     "name": "Prosciutto e Funghi",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
@@ -148,7 +148,7 @@
   {
     "id": 12,
     "name": "Puttanesca",
-    "photo": "../public/assets/pizza-1.jpg",
+    "photo": "../public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
