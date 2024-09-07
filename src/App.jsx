@@ -19,12 +19,21 @@ function AppContent() {
   const { state: stateMenuMobile } = useContext(MenuMobileContext);
   const { menuOpen } = stateMenuMobile;
 
-  // //set block page
-  // useEffect(() => {
-  //   document.body.style.overflow = blockPage ? "hidden" : "auto";
-  //   document.documentElement.style.overflow = blockPage ? "hidden" : "auto";
-  //   document.body.style.pointerEvents = menuOpen ? "none" : "auto";
-  // }, [menuOpen, blockPage]);
+  //set block page
+  useEffect(() => {
+    //set body fixed when popup is open
+    if (menuOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.pointerEvents = "none";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.pointerEvents = "auto";
+    }
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.pointerEvents = "auto";
+    };
+  }, [menuOpen]);
   return (
     <>
       <ScrollToTop />

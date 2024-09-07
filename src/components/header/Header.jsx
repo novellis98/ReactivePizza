@@ -14,19 +14,20 @@ function Header() {
   const headerRef = useRef(null);
   useEffect(() => {
     const handleClick = (event) => {
-      if (headerRef.current && headerRef.current.contains(event.target)) {
-        return;
-      }
-      if (menuOpen) {
-        dispatchMenuMobile({ type: "TOOGLE_MENU" });
+      // Chiudi il menu se il clic è al di fuori di Header
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        if (menuOpen) {
+          dispatchMenuMobile({ type: "TOOGLE_MENU" });
+        }
       }
     };
-    document.body.addEventListener("click", handleClick);
+
+    document.addEventListener("mousedown", handleClick);
     return () => {
-      document.body.removeEventListener("click", handleClick);
+      document.removeEventListener("mousedown", handleClick);
     };
   }, [menuOpen, dispatchMenuMobile]);
-  //
+
   return (
     <header className={styles.header} ref={headerRef}>
       <IconMenu />
