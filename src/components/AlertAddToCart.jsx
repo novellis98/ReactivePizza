@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./AlertAddToCart.module.scss";
 import { CartContext } from "../contexts/CartContext";
 
