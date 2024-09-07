@@ -16,7 +16,7 @@ const initialState = {
 
 function orderReducer(state, action) {
   switch (action.type) {
-    case "TOGGLE_POPUP":
+    case "TOOGLE_POPUP":
       return {
         ...state,
         showPopupOrder: !state.showPopupOrder,

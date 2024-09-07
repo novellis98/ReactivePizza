@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styles from "./Cart.module.scss";
 import { CartContext } from "../contexts/CartContext";
 
 function Cart() {
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
   const { show_cart, cart, total_price, quantity } = stateCart;
-
+  console.log(show_cart);
   function handleQuantityDec(index) {
     dispatchCart({ type: "CHANGE_QUANTITY_DEC", payload: index });
   }
@@ -14,8 +14,27 @@ function Cart() {
     dispatchCart({ type: "CHANGE_QUANTITY_INC", payload: index });
   }
 
+  const cartRef = useRef(null);
+  //close cart when clicking outside
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (cartRef.current && cartRef.current.contains(event.target)) {
+        return;
+      }
+      if (show_cart) {
+        dispatchCart({ type: "SHOW_CART" });
+      }
+    };
+    document.body.addEventListener("click", handleClick);
+    return () => {
+      document.body.removeEventListener("click", handleClick);
+    };
+  }, [show_cart, dispatchCart]);
   return (
-    <div className={`${styles.cart} ${show_cart ? styles.open : ""}`}>
+    <div
+      className={`${styles.cart} ${show_cart ? styles.open : ""}`}
+      ref={cartRef}
+    >
       <button
         className={styles.close_button}
         onClick={() => dispatchCart({ type: "SHOW_CART" })}

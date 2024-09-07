@@ -1,16 +1,36 @@
 import { useContext } from "react";
 import styles from "./CartSvg.module.scss";
 import { CartContext } from "../../contexts/CartContext";
+import { OffersContext } from "../../contexts/OffersContext";
+import { MenuFreeContext } from "../../contexts/MenuFreeContext";
 
 function CartSvg() {
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
   const { articles } = stateCart;
+  const { state: stateOffers, dispatch: dispatchOffers } =
+    useContext(OffersContext);
+  const { showPopupOrder } = stateOffers;
+  const { state: stateMenuFree, dispatch: dispatchMenuFree } =
+    useContext(MenuFreeContext);
+  const { showOrderForm } = stateMenuFree;
+  const openCart = (event) => {
+    event.stopPropagation();
+    dispatchCart({ type: "SHOW_CART" });
 
+    //close offers and menufree popup  if the cart get opened
+
+    if (showPopupOrder) {
+      dispatchOffers({ type: "TOOGLE_POPUP" });
+    }
+    if (showOrderForm) {
+      dispatchMenuFree({ type: "CLOSE_POPUP" });
+    }
+  };
   return (
     <div className={styles.cart}>
       {/* !Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. */}
       <svg
-        onClick={() => dispatchCart({ type: "SHOW_CART", payload: "" })}
+        onClick={() => openCart(event)}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"
       >

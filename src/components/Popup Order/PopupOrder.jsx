@@ -10,8 +10,8 @@ function PopupOrder() {
   const { state, dispatch } = useContext(OffersContext);
   const { visibleComponent, menuSelected, price, pizzas, potatoes, drinks } =
     state;
-  const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
-  const {} = stateCart;
+  const { dispatch: dispatchCart } = useContext(CartContext);
+
   //reset popup data when changing page
   useEffect(() => {
     dispatch({ type: "RESET" });
@@ -21,7 +21,7 @@ function PopupOrder() {
     <div className={styles.order}>
       <span
         className={styles.btn_close}
-        onClick={() => dispatch({ type: "TOGGLE_POPUP" })}
+        onClick={() => dispatch({ type: "TOOGLE_POPUP" })}
       ></span>
       <h1 className={styles.order_h1}>Modifica il tuo menù</h1>
       <h2 className={styles.order_h2}>Menù scelto : {menuSelected}</h2>
