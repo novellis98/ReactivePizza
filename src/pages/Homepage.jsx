@@ -21,7 +21,7 @@ function Homepage() {
           <figure className={styles.intro_cottura}>
             <img
               className={styles.intro_cottura_img}
-              src="./assets/pizza-2.jpg"
+              src="/images/pizza-2.jpg"
               alt="cottura forno a legna"
             />
             <figcaption className={styles.intro_cottura_caption}>

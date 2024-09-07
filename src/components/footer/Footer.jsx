@@ -7,7 +7,7 @@ function Footer() {
       <footer className={styles.footer}>
         <Logo variant="footer_logo" />
         <div className={styles.company_logo}>
-          <img src="./assets/logo-bianco.png" alt="logo company" />
+          <img src="/images/logo-bianco.png" alt="logo company" />
         </div>
 
         <div className={styles.copyright}>

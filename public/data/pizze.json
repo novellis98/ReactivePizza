@@ -148,7 +148,7 @@
   {
     "id": 12,
     "name": "Puttanesca",
-    "photo": "../public/images/pizza-1.jpg",
+    "photo": "/public/images/pizza-1.jpg",
     "ingredients": [
       { "id": 1, "name": "Pomodoro" },
       { "id": 2, "name": "Mozzarella" },
