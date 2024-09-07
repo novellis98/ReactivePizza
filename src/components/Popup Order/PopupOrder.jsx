@@ -21,7 +21,7 @@ function PopupOrder() {
       <h1 className={styles.order_h1}>Modifica il tuo menù</h1>
       <h2 className={styles.order_h2}>Menù scelto : {menuSelected}</h2>
       <div
-        className={`${styles.container} ${
+        className={`${styles.container} 
           visibleComponent !== "" ? styles.expanded : ""
         }`}
       >

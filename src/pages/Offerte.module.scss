@@ -2,9 +2,13 @@
 @import "../mixins.scss";
 .container {
   background-color: $primary-color-3;
+  &.minHeight {
+    height: 65rem;
+  }
 }
 .hidden {
   visibility: hidden;
+  height: 0;
 }
 .intro {
   & h1 {

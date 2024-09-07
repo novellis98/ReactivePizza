@@ -22,9 +22,13 @@ function Offerte() {
     dispatch({ type: "SET_MENU", payload: { menu, price } });
   };
   return (
-    <main className={styles.container}>
+    <main
+      className={`${styles.container} ${
+        showPopupOrder ? styles.minHeight : ""
+      }`}
+    >
       <AlertAddToCart />
-      <div className={styles.intro}>
+      <div className={`${showPopupOrder ? styles.hidden : styles.intro} `}>
         <h1 className={showPopupOrder ? styles.hidden : ""}>
           Le nostre offerte
         </h1>
