@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import styles from "./MenuFree.module.scss";
 import { OffersContext } from "../contexts/OffersContext";
 import { MenuFreeContext } from "../contexts/MenuFreeContext";
@@ -21,6 +21,22 @@ function MenuFree() {
   useEffect(() => {
     dispatchMenuFree({ type: "CLOSE_POPUP" });
   }, [dispatchMenuFree]);
+  const popupRef = useRef();
+  console.log(showOrderForm);
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (popupRef.current && popupRef.current.contains(event.target)) {
+        return;
+      }
+      if (showOrderForm) {
+        dispatchMenuFree({ type: "CLOSE_POPUP" });
+      }
+    };
+    document.body.addEventListener("click", handleClick);
+    return () => {
+      document.body.removeEventListener("click", handleClick);
+    };
+  }, [showOrderForm, dispatchMenuFree]);
   useEffect(() => {
     //set body fixed when popup is open
     if (showOrderForm) {
@@ -36,53 +52,39 @@ function MenuFree() {
     };
   }, [showOrderForm]);
 
-  function scrollToPizzas() {
-    const element = document.getElementById("pizzas");
-    const elementPosition = element.getBoundingClientRect().top;
-    window.scrollTo({
-      top: elementPosition - 208,
-      behavior: "smooth",
-    });
-  }
-  function scrollToPotatoes() {
-    const element = document.getElementById("potatoes");
-    const elementPosition = element.getBoundingClientRect().top;
-    window.scrollTo({
-      top: elementPosition - 208,
-      behavior: "smooth",
-    });
-  }
-  function scrollToDrinks() {
-    const element = document.getElementById("drinks");
-    const elementPosition = element.getBoundingClientRect().top;
-    window.scrollTo({
-      top: elementPosition - 208,
-      behavior: "smooth",
-    });
+  function scrollTo(id) {
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      window.scrollTo({
+        top: elementPosition - 208,
+        behavior: "smooth",
+      });
+    }
   }
   return (
     <div className={styles.background}>
       <AlertAddToCart />
       <div className={styles.order}>
-        {showOrderForm && selectedItem && <OrderAddToCart />}
+        {showOrderForm && selectedItem && <OrderAddToCart ref={popupRef} />}
         <h1 className={styles.order_title}>
           Ordina e scegli tutto ciò che preferisci
         </h1>
         <button
           className={`${styles.btn} ${styles.show_items} ${styles.pizzas}`}
-          onClick={scrollToPizzas}
+          onClick={() => scrollTo("pizzas")}
         >
           pizze
         </button>
         <button
           className={`${styles.btn} ${styles.show_items} ${styles.potatoes}`}
-          onClick={scrollToPotatoes}
+          onClick={() => scrollTo("potatoes")}
         >
           patatine
         </button>
         <button
           className={`${styles.btn} ${styles.show_items} ${styles.drinks}`}
-          onClick={scrollToDrinks}
+          onClick={() => scrollTo("drinks")}
         >
           bevande
         </button>

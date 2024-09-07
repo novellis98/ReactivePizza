@@ -13,15 +13,11 @@ import { MenuFreeProvider } from "./contexts/MenuFreeContext";
 import { CartProvider } from "./contexts/CartContext";
 import ScrollToTop from "./hooks/ScrollToTop";
 import { MenuMobileContext, MenuMobileProvider } from "./contexts/MenuMobile";
-import { BlockPageProvider } from "./contexts/BlockPageContext";
-import { BlockPageContext } from "./contexts/BlockPageContext";
 import { useContext, useEffect } from "react";
 
 function AppContent() {
   const { state: stateMenuMobile } = useContext(MenuMobileContext);
   const { menuOpen } = stateMenuMobile;
-  const { state: stateBlockPage } = useContext(BlockPageContext);
-  const { blockPage } = stateBlockPage;
 
   // //set block page
   // useEffect(() => {
@@ -46,21 +42,19 @@ function AppContent() {
 
 export default function App() {
   return (
-    <BlockPageProvider>
-      <CartProvider>
-        <MenuFreeProvider>
-          <OffersProvider>
-            <MenuMobileProvider>
-              <BrowserRouter>
-                <Cart />
-                <Header />
-                <AppContent />
-                <Footer />
-              </BrowserRouter>
-            </MenuMobileProvider>
-          </OffersProvider>
-        </MenuFreeProvider>
-      </CartProvider>
-    </BlockPageProvider>
+    <CartProvider>
+      <MenuFreeProvider>
+        <OffersProvider>
+          <MenuMobileProvider>
+            <BrowserRouter>
+              <Cart />
+              <Header />
+              <AppContent />
+              <Footer />
+            </BrowserRouter>
+          </MenuMobileProvider>
+        </OffersProvider>
+      </MenuFreeProvider>
+    </CartProvider>
   );
 }

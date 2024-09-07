@@ -3,7 +3,7 @@ import styles from "./OrderAddToCart.module.scss";
 import { MenuFreeContext } from "../contexts/MenuFreeContext";
 import { CartContext } from "../contexts/CartContext";
 
-function OrderAddToCart() {
+function OrderAddToCart(props, ref) {
   const { state: stateMenuFree, dispatch: dispatchMenuFree } =
     useContext(MenuFreeContext);
   const { selectedItem } = stateMenuFree;
@@ -27,7 +27,7 @@ function OrderAddToCart() {
   }
 
   return (
-    <div className={styles.orderContainer}>
+    <div className={styles.orderContainer} ref={ref}>
       <div className={styles.header}>
         <h2> {selectedItem.name} </h2>
         <button
