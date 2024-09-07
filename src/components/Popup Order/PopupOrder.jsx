@@ -2,7 +2,7 @@ import styles from "./PopupOrder.module.scss";
 import OrderPizza from "./OrderPizza";
 import OrderPatatine from "./OrderPatatine";
 import OrderBevande from "./OrderBevande";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { OffersContext } from "../../contexts/OffersContext";
 import { CartContext } from "../../contexts/CartContext";
 
@@ -12,6 +12,11 @@ function PopupOrder() {
     state;
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
   const {} = stateCart;
+  //reset popup data when changing page
+  useEffect(() => {
+    dispatch({ type: "RESET" });
+  }, [dispatch]);
+  //
   return (
     <div className={styles.order}>
       <span

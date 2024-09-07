@@ -22,6 +22,7 @@ function orderReducer(state, action) {
 }
 function MenuFreeProvider({ children }) {
   const [state, dispatch] = useReducer(orderReducer, initialState);
+
   return (
     <MenuFreeContext.Provider value={{ state, dispatch }}>
       {children}

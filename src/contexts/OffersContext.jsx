@@ -50,6 +50,8 @@ function orderReducer(state, action) {
       return { ...state, isLoading: true };
     case "LOADING_COMPLETE":
       return { ...state, isLoading: false };
+    case "RESET":
+      return { ...state, pizzas: null, potatoes: null, drinks: null };
     case "ADD_TO_CART":
       return {
         ...state,

@@ -23,12 +23,12 @@ function AppContent() {
   const { state: stateBlockPage } = useContext(BlockPageContext);
   const { blockPage } = stateBlockPage;
 
-  //set block page
-  useEffect(() => {
-    document.body.style.overflow = blockPage ? "hidden" : "auto";
-    document.documentElement.style.overflow = blockPage ? "hidden" : "auto";
-    document.body.style.pointerEvents = menuOpen ? "none" : "auto";
-  }, [menuOpen, blockPage]);
+  // //set block page
+  // useEffect(() => {
+  //   document.body.style.overflow = blockPage ? "hidden" : "auto";
+  //   document.documentElement.style.overflow = blockPage ? "hidden" : "auto";
+  //   document.body.style.pointerEvents = menuOpen ? "none" : "auto";
+  // }, [menuOpen, blockPage]);
   return (
     <>
       <ScrollToTop />

@@ -7,7 +7,7 @@ import AlertAddToCart from "../components/AlertAddToCart";
 import Spinner from "../components/Spinner";
 
 function MenuFree() {
-  const { state, dispatch } = useContext(OffersContext);
+  const { state } = useContext(OffersContext);
   const { list_pizzas, list_potatoes, list_drinks, isLoading } = state;
 
   const { state: stateMenuFree, dispatch: dispatchMenuFree } =
@@ -17,16 +17,22 @@ function MenuFree() {
   const handleClick = (item) => {
     dispatchMenuFree({ type: "OPEN_POPUP", payload: item });
   };
-  console.log(showOrderForm);
+
+  useEffect(() => {
+    dispatchMenuFree({ type: "CLOSE_POPUP" });
+  }, [dispatchMenuFree]);
   useEffect(() => {
     //set body fixed when popup is open
     if (showOrderForm) {
       document.documentElement.style.overflow = "hidden";
+      document.body.style.pointerEvents = "none";
     } else {
       document.documentElement.style.overflow = "";
+      document.body.style.pointerEvents = "auto";
     }
     return () => {
       document.documentElement.style.overflow = "";
+      document.body.style.pointerEvents = "auto";
     };
   }, [showOrderForm]);
 

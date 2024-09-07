@@ -1,19 +1,16 @@
 import { useContext } from "react";
 import styles from "./IconMenu.module.scss";
 import { MenuMobileContext } from "../contexts/MenuMobile";
-import { BlockPageContext } from "../contexts/BlockPageContext";
 function IconMenu() {
   const { state: stateMenuMobile, dispatch: dispatchMenuMobile } =
     useContext(MenuMobileContext);
-  const { menuOpen } = stateMenuMobile;
-  const { dispatch: dispatchBlockPage } = useContext(BlockPageContext);
+  const { menuOpen, blockPage, bodyNoTouch } = stateMenuMobile;
+
   const toggleMenu = () => {
     dispatchMenuMobile({ type: "TOOGLE_MENU" });
-    if (menuOpen) {
-      dispatchBlockPage({ type: "BLOCK_PAGE", payload: false });
-    } else {
-      dispatchBlockPage({ type: "BLOCK_PAGE", payload: true });
-    }
+    console.log(menuOpen);
+    console.log(blockPage);
+    console.log(bodyNoTouch);
   };
 
   return (

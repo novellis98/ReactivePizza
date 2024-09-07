@@ -3,6 +3,8 @@ import { createContext, useReducer } from "react";
 const MenuMobileContext = createContext();
 const initialState = {
   menuOpen: false,
+  blockPage: false,
+  bodyNoTouch: false,
 };
 function orderReducer(state, action) {
   switch (action.type) {
@@ -10,11 +12,8 @@ function orderReducer(state, action) {
       return {
         ...state,
         menuOpen: !state.menuOpen,
-      };
-    case "CLOSE_MENU":
-      return {
-        ...state,
-        menuOpen: action.payload,
+        blockPage: !state.blockPage,
+        bodyNoTouch: !state.bodyNoTouch,
       };
 
     default:
