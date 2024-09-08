@@ -20,14 +20,12 @@
 .footer_logo {
   grid-row: 1/2;
   grid-column: 2/3;
+  cursor: pointer;
   @include media-query(phone) {
     grid-row: 1;
     grid-column: 1/4;
   }
   img {
-    height: 100%;
-    @include media-query(phone) {
-      height: 4rem;
-    }
+    height: 4rem;
   }
 }
