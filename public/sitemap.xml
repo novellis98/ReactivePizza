@@ -1,16 +1,51 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://reactivepizza.netlify.app</loc>
+    <lastmod>2024-09-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 
+  <!-- Pagina Menu -->
+  <url>
+    <loc>https://reactivepizza.netlify.app/menu</loc>
+    <lastmod>2024-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-<url>
-  <loc>https://reactivepizza.netlify.app/</loc>
-  <lastmod>2024-09-08T18:03:37+00:00</lastmod>
-</url>
+  <!-- Pagina Ordina -->
+  <url>
+    <loc>https://reactivepizza.netlify.app/ordina</loc>
+    <lastmod>2024-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
+  <!-- Pagina Menu Free -->
+  <url>
+    <loc>https://reactivepizza.netlify.app/menu-free</loc>
+    <lastmod>2024-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
+  <!-- Pagina Offerte -->
+  <url>
+    <loc>https://reactivepizza.netlify.app/offerte</loc>
+    <lastmod>2024-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pagina Chi Siamo -->
+  <url>
+    <loc>https://reactivepizza.netlify.app/about</loc>
+    <lastmod>2024-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
