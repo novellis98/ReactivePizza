@@ -125,10 +125,11 @@ function orderReducer(state, action) {
 
     case "REMOVE_FROM_CART":
       const removedItem = state.cart[action.payload];
+      const itemQuantity = removedItem.quantity || 1;
       const filteredCart = state.cart.filter(
         (_, index) => index !== action.payload
       );
-      const newArticlesCounts = state.articles - removedItem.quantity;
+      const newArticlesCounts = state.articles - itemQuantity;
       const newTotalPrice = filteredCart.reduce(
         (acc, item) => acc + (Number(item.price) * item.quantity || 0),
         0
