@@ -45,3 +45,23 @@
   width: 100%;
   z-index: 0;
 }
+:global(.leaflet-popup .leaflet-popup-content-wrapper) {
+  background-color: $secondary-color-2;
+  border-radius: 5px;
+  padding-right: 0.5rem;
+}
+
+:global(.leaflet-popup .leaflet-popup-content a) {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: $blue-navy;
+}
+
+:global(.leaflet-popup .leaflet-popup-tip) {
+  background-color: $secondary-color-2;
+}
+
+:global(.leaflet-popup-close-button span) {
+  font-size: 2rem;
+  color: $blue-navy;
+}

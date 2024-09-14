@@ -12,7 +12,10 @@ import Cart from "./components/Cart";
 import { MenuFreeProvider } from "./contexts/MenuFreeContext";
 import { CartProvider } from "./contexts/CartContext";
 import ScrollToTop from "./hooks/ScrollToTop";
-import { MenuMobileContext, MenuMobileProvider } from "./contexts/MenuMobile";
+import {
+  MenuMobileContext,
+  MenuMobileProvider,
+} from "./contexts/MenuMobileContext";
 import { useContext, useEffect } from "react";
 
 function AppContent() {

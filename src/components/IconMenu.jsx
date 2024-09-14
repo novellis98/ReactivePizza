@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import styles from "./IconMenu.module.scss";
-import { MenuMobileContext } from "../contexts/MenuMobile";
+import { MenuMobileContext } from "../contexts/MenuMobileContext";
 import { CartContext } from "../contexts/CartContext";
 import { OffersContext } from "../contexts/OffersContext";
 import { MenuFreeContext } from "../contexts/MenuFreeContext";
 function IconMenu() {
   const { state: stateMenuMobile, dispatch: dispatchMenuMobile } =
     useContext(MenuMobileContext);
-  const { menuOpen, blockPage, bodyNoTouch } = stateMenuMobile;
+  const { menuOpen } = stateMenuMobile;
   const { state: stateCart, dispatch: dispatchCart } = useContext(CartContext);
   const { show_cart } = stateCart;
   const { state: stateOffers, dispatch: dispatchOffers } =

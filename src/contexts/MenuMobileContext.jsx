@@ -11,11 +11,6 @@ function orderReducer(state, action) {
         ...state,
         menuOpen: !state.menuOpen,
       };
-    case "CLOSE_MENU":
-      return {
-        ...state,
-        menuOpen: action.payload,
-      };
 
     default:
       return state;

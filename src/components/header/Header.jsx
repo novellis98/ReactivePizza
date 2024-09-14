@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import CartSvg from "../svg/CartSvg";
 import IconMenu from "../IconMenu";
 import { useContext, useEffect, useRef } from "react";
-import { MenuMobileContext } from "../../contexts/MenuMobile";
+import { MenuMobileContext } from "../../contexts/MenuMobileContext";
 
 function Header() {
   const { state: stateMenuMobile, dispatch: dispatchMenuMobile } =

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NavHeader.module.scss";
-import { MenuMobileContext } from "../../contexts/MenuMobile";
+import { MenuMobileContext } from "../../contexts/MenuMobileContext";
 
 function NavHeader() {
   const { state: stateMenuMobile, dispatch: dispatchMenuMobile } =
