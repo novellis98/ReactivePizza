@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 const initialState = {
   showAlert: false,
@@ -11,6 +11,12 @@ const initialState = {
   quantity: 0,
   alertType: false,
 };
+
+const getInitialState = () => {
+  const savedState = localStorage.getItem("cartState");
+  return savedState ? JSON.parse(savedState) : initialState;
+};
+
 function orderReducer(state, action) {
   switch (action.type) {
     case "SHOW_CART":
@@ -21,7 +27,6 @@ function orderReducer(state, action) {
 
     case "ADD_OFFER_TO_CART":
       const newOfferItem = [...state.cart, action.payload];
-
       return {
         ...state,
         showOrderForm: false,
@@ -33,21 +38,18 @@ function orderReducer(state, action) {
       };
 
     case "ADD_ITEM_TO_CART":
-      //   // Controlla se l'articolo è già presente nel carrello
       const itemIndex = state.cart.findIndex(
         (item) => item.id === action.payload.selectedItem.id
       );
       let newItem;
 
       if (itemIndex > -1) {
-        //     // L'articolo esiste già, aggiorna la sua quantità
         newItem = [...state.cart];
         newItem[itemIndex] = {
           ...newItem[itemIndex],
           quantity: newItem[itemIndex].quantity + action.payload.quantity,
         };
       } else {
-        //     // L'articolo non esiste, aggiungi il nuovo articolo
         newItem = [
           ...state.cart,
           { ...action.payload.selectedItem, quantity: action.payload.quantity },
@@ -155,9 +157,16 @@ function orderReducer(state, action) {
       return state;
   }
 }
+
 const CartContext = createContext();
+
 function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(orderReducer, initialState);
+  const [state, dispatch] = useReducer(orderReducer, getInitialState());
+
+  useEffect(() => {
+    localStorage.setItem("cartState", JSON.stringify(state));
+  }, [state]);
+
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

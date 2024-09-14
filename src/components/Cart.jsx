@@ -50,24 +50,28 @@ function Cart() {
                 <li key={index} className={styles.cart_order_item}>
                   {item.menuSelected ? (
                     <>
-                      <h3 className={styles.cart_order_item_menu_selected}>
-                        {item.menuSelected}
-                      </h3>
-                      <p className={styles.cart_order_item_detail}>
-                        <strong>Pizza:</strong>{" "}
-                        {item.pizzas ? item.pizzas : "Nessuna selezionata"}
-                      </p>
-                      <p className={styles.cart_order_item_detail}>
-                        <strong>Patatine:</strong>{" "}
-                        {item.potatoes ? item.potatoes : "Nessuna selezionata"}
-                      </p>
-                      <p className={styles.cart_order_item_detail}>
-                        <strong>Bevande:</strong>{" "}
-                        {item.drinks ? item.drinks : "Nessuna selezionata"}
-                      </p>
-                      <p className={styles.cart_order_item_price}>
-                        Prezzo: {item.price} €
-                      </p>
+                      <div>
+                        <h3 className={styles.cart_order_item_menu_selected}>
+                          {item.menuSelected}
+                        </h3>
+                        <p className={styles.cart_order_item_detail}>
+                          <strong>Pizza:</strong>{" "}
+                          {item.pizzas ? item.pizzas : "Nessuna selezionata"}
+                        </p>
+                        <p className={styles.cart_order_item_detail}>
+                          <strong>Patatine:</strong>{" "}
+                          {item.potatoes
+                            ? item.potatoes
+                            : "Nessuna selezionata"}
+                        </p>
+                        <p className={styles.cart_order_item_detail}>
+                          <strong>Bevande:</strong>{" "}
+                          {item.drinks ? item.drinks : "Nessuna selezionata"}
+                        </p>
+                        <p className={styles.cart_order_item_price}>
+                          Prezzo: {item.price} €
+                        </p>
+                      </div>
                       <button
                         className={styles.cart_order_item_remove}
                         onClick={() =>
@@ -82,30 +86,32 @@ function Cart() {
                     </>
                   ) : (
                     <>
-                      <h3 className={styles.cart_order_item_detail}>
-                        {item.name ? item.name : "Nessuna selezionata"}
-                      </h3>
+                      <div>
+                        <h3 className={styles.cart_order_item_detail}>
+                          {item.name ? item.name : "Nessuna selezionata"}
+                        </h3>
 
-                      <div className={styles.cart_order_item_price}>
-                        Quantità:
-                        <button
-                          className={styles.btn_quantity}
-                          onClick={() => handleQuantityDec(index)}
-                        >
-                          -
-                        </button>{" "}
-                        {item.quantity}
-                        <button
-                          className={styles.btn_quantity}
-                          onClick={() => handleQuantityInc(index)}
-                        >
-                          +
-                        </button>
+                        <div className={styles.cart_order_item_price}>
+                          Quantità:
+                          <button
+                            className={styles.btn_quantity}
+                            onClick={() => handleQuantityDec(index)}
+                          >
+                            -
+                          </button>{" "}
+                          {item.quantity}
+                          <button
+                            className={styles.btn_quantity}
+                            onClick={() => handleQuantityInc(index)}
+                          >
+                            +
+                          </button>
+                        </div>
+
+                        <p className={styles.cart_order_item_price}>
+                          Prezzo: {item.price * item.quantity} €
+                        </p>
                       </div>
-
-                      <p className={styles.cart_order_item_price}>
-                        Prezzo: {item.price * item.quantity} €
-                      </p>
                       <button
                         className={styles.cart_order_item_remove}
                         onClick={() =>
