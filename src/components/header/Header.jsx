@@ -14,7 +14,6 @@ function Header() {
   const headerRef = useRef(null);
   useEffect(() => {
     const handleClick = (event) => {
-      // Chiudi il menu se il clic è al di fuori di Header
       if (headerRef.current && !headerRef.current.contains(event.target)) {
         if (menuOpen) {
           dispatchMenuMobile({ type: "TOOGLE_MENU" });
@@ -28,6 +27,22 @@ function Header() {
     };
   }, [menuOpen, dispatchMenuMobile]);
 
+  //recalculate layout for fixing the menu size
+  useEffect(() => {
+    const handleResize = () => {
+      document.body.style.display = "none";
+      setTimeout(() => {
+        document.body.style.display = "block";
+      }, 100);
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  //
   return (
     <header className={styles.header} ref={headerRef}>
       <IconMenu />

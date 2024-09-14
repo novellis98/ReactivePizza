@@ -7,6 +7,7 @@
   justify-content: center;
   transition: max-height 0.3s ease-in-out;
   pointer-events: auto;
+
   // Menu nascosto di default su mobile
   @include media-query(tab-land) {
     display: block;
@@ -18,8 +19,8 @@
     max-height: 0;
     z-index: 100;
     padding: 0 1.5rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); // Ombra per profondità
-    border-radius: 0 0 1rem 1rem; // Arrotonda angoli in basso
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 1rem 1rem;
   }
 
   &__list {
@@ -30,6 +31,7 @@
     @include media-query(tab-land) {
       flex-direction: column;
       align-items: center;
+      height: min-content;
       padding: 5rem 0 0 0;
     }
 
@@ -38,9 +40,12 @@
       list-style: none;
 
       @include media-query(tab-land) {
-        margin: 2rem 0;
+        margin: 1rem 0;
         width: 100%;
         text-align: center;
+      }
+      @include media-query(phone) {
+        margin: 2rem 0;
       }
 
       a {
