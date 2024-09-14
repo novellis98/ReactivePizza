@@ -56,9 +56,8 @@
         font-weight: 700;
         cursor: pointer;
         color: $primary-color-3;
-        @include media-query(phone) {
-          font-size: 2rem;
-        }
+        font-size: 2rem;
+        padding: 0.3rem 0.6rem;
       }
       &_menu_selected {
         text-transform: uppercase;
