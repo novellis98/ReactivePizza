@@ -11,7 +11,7 @@
   @include media-query(tab-land) {
     display: block;
     position: absolute;
-    top: calc(100% - 13rem);
+    top: calc(100% - 8rem);
     width: 100%;
     background-color: $primary-color-4;
     overflow: hidden;
