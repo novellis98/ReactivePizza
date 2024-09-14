@@ -54,6 +54,12 @@
         transform: scale(1.1);
         color: $blue-navy;
       }
+      @include media-query(no-hover) {
+        &:hover {
+          transform: none;
+          color: inherit;
+        }
+      }
     }
 
     &_title {

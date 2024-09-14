@@ -1,16 +1,22 @@
 import PopupOrder from "../components/Popup Order/PopupOrder";
 import styles from "./Offerte.module.scss";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { OffersContext } from "../contexts/OffersContext";
 import AlertAddToCart from "../components/AlertAddToCart";
 function Offerte() {
   const { state, dispatch } = useContext(OffersContext);
   const { showPopupOrder } = state;
-
+  const popupRef = useRef(null);
   useEffect(() => {
-    //set body fixed when popup is open
+    //set body fixed when popup is open and scroll to popup
     if (showPopupOrder) {
       document.body.style.overflow = "hidden";
+      if (popupRef.current) {
+        popupRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
     } else {
       document.body.style.overflow = "";
     }
@@ -34,7 +40,11 @@ function Offerte() {
         </h1>
       </div>
       <section className={styles.promo}>
-        {showPopupOrder && <PopupOrder />}
+        {showPopupOrder && (
+          <div ref={popupRef}>
+            <PopupOrder />
+          </div>
+        )}
         <div
           className={` ${styles.promo_post} ${
             showPopupOrder ? styles.hidden : ""

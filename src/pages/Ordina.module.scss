@@ -39,6 +39,13 @@
     color: $blue-navy;
     fill: $blue-navy;
   }
+  @include media-query(no-hover) {
+    &:hover {
+      transform: none;
+      color: inherit;
+      fill: inherit;
+    }
+  }
 }
 .offerte {
   height: 40rem;
@@ -65,5 +72,12 @@
     transform: scale(1.2);
     color: $blue-navy;
     fill: $blue-navy;
+  }
+  @include media-query(no-hover) {
+    &:hover {
+      transform: none;
+      color: inherit;
+      fill: inherit;
+    }
   }
 }

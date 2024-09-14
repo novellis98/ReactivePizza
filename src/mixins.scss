@@ -35,4 +35,10 @@
       @content;
     }
   }
+  // no touch
+  @if $breakpoint == no-hover {
+    @media (hover: none) and (pointer: coarse) {
+      @content;
+    }
+  }
 }
