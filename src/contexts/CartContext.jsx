@@ -34,6 +34,7 @@ function orderReducer(state, action) {
         articles: state.articles + 1,
         total_price: state.total_price + Number(action.payload.price),
         showAlert: true,
+        alertType: false,
         alertMessage: "Articolo aggiunto al carrello!",
       };
 
@@ -64,6 +65,7 @@ function orderReducer(state, action) {
           state.total_price +
           Number(action.payload.selectedItem.price) * action.payload.quantity,
         showAlert: true,
+        alertType: false,
         alertMessage: "Articolo aggiunto al carrello!",
       };
 
