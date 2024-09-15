@@ -5,18 +5,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: max-height 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   pointer-events: auto;
 
   // Menu nascosto di default su mobile
   @include media-query(tab-land) {
-    display: block;
-    position: absolute;
-    top: calc(100% - 8rem);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     background-color: $primary-color-4;
-    overflow: hidden;
-    max-height: 0;
+    overflow: auto;
+    transform: translateY(-100%);
+    max-height: 500px;
     z-index: 100;
     padding: 0 1.5rem;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -86,8 +87,7 @@
   // Quando il menu è aperto
   &.open {
     @include media-query(tab-land) {
-      max-height: 600px;
-      transition: max-height 0.3s ease-in-out;
+      transform: translateY(0);
     }
   }
 }

@@ -27,22 +27,6 @@ function Header() {
     };
   }, [menuOpen, dispatchMenuMobile]);
 
-  //recalculate layout for fixing the menu size
-  useEffect(() => {
-    const handleResize = () => {
-      document.body.style.display = "none";
-      setTimeout(() => {
-        document.body.style.display = "block";
-      }, 100);
-    };
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  //
   return (
     <header className={styles.header} ref={headerRef}>
       <IconMenu />
