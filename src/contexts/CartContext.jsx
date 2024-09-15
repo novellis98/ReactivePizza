@@ -123,6 +123,7 @@ function orderReducer(state, action) {
         ...state,
         showAlert: false,
         alertMessage: "",
+        alertType: false,
       };
 
     case "REMOVE_FROM_CART":

@@ -1,5 +1,6 @@
 @import "../../variables.scss";
 @import "../../mixins.scss";
+
 .btn_close {
   display: block;
   position: absolute;
@@ -31,14 +32,18 @@
 .order {
   padding: 1rem;
   border-radius: 5px;
-  position: relative;
+  position: absolute;
+  top: 20rem;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: $primary-color-4;
+  width: 50vw;
 
   @include media-query(tab-land) {
-    margin: 0 15rem;
+    width: 75vw;
   }
   @include media-query(tab-small) {
-    margin: 0 5rem;
+    width: 90vw;
   }
   @include media-query(phone) {
     width: 95vw;
@@ -109,11 +114,16 @@
   }
 
   &_title {
+    font-size: 3rem;
     text-align: center;
     text-transform: uppercase;
     padding: 3rem 0;
     @include media-query(phone) {
+      font-size: 2.5rem;
       padding: 1rem 0;
+    }
+    @include media-query(phone-small) {
+      font-size: 1.5rem;
     }
   }
   &_products {
@@ -164,11 +174,16 @@
   font-size: 1.5rem;
   border: none;
   border-radius: 5px;
-  padding: 0.5rem;
+  padding: 1rem;
   cursor: pointer;
   color: $secondary-color-2;
   @include media-query(phone) {
-    padding: 0.1rem;
+    padding: 0.5rem;
+    text-wrap: wrap;
+  }
+  @include media-query(phone-small) {
+    font-size: 1.4rem;
+    padding: 0.2rem;
     text-wrap: wrap;
   }
 
